@@ -1,0 +1,10 @@
+#!/bin/bash
+
+ps -ef | grep "node \./app\.js" | grep node | awk '{ print $2 }' > .PID
+PID=`cat .PID`
+if [[ $PID ]]; then
+	kill -9 $PID
+fi
+
+#nohup node ./app.js &
+nohup node ./app.js 1035 &

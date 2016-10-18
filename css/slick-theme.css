@@ -1,0 +1,65 @@
+/*.basic .slick-slide { background:red!important; }
+.basic .slick-track { background:blue!important; }*/
+.content.basic.slider.slick-slider { height:100vh!important; width:100%!important; }
+
+.itemx, .basic .slick-slide, .basic .slick-track
+{ height:100%; width:100%; }
+
+.itemx { overflow-y:auto; }
+
+.content.basic { padding:0; margin:0; overflow:hidden; /*box-sizing:content-box;*/ }
+.basic .slick-slide, .basic .slick-track { padding:0; }
+.basic .itemx { padding:100px 50px; padding-bottom:0px; /*box-sizing:border-box;*/ }
+/*.basic .itemx:after { content:""; height:100px; display:block; }*/
+
+.slick-prev, .slick-next
+{
+	cursor: pointer;
+	z-index:999;
+
+	/*color:#FFFFFF;*/
+	border: none; outline: none;
+}
+.slick-prev { background: linear-gradient(to right, black, transparent); }
+.slick-next { background: linear-gradient(to right, transparent, black); }
+
+.slick-prev, .slick-prev *, .slick-prev *:before, .slick-prev *:after,
+.slick-next, .slick-next *, .slick-next *:before, .slick-next *:after
+{ color:#FFFFFF; }
+
+.slick-prev:hover, .slick-prev:hover *, .slick-prev:hover *:before, .slick-prev:hover *:after,
+.slick-prev:focus, .slick-prev:focus *, .slick-prev:focus *:before, .slick-prev:focus *:after,
+.slick-next:hover, .slick-next:hover *, .slick-next:hover *:before, .slick-next:hover *:after,
+.slick-next:focus, .slick-next:focus *, .slick-next:focus *:before, .slick-next:focus *:after
+{
+	color:#FF0060;
+	border: none; outline: none;
+	/*background: transparent;*/
+}
+
+.basic > .slick-prev, .responsive > .slick-prev,
+.basic > .slick-next, .responsive > .slick-next
+{
+	font-size: 20px;
+	position: absolute;
+	top:0;
+
+	width: 5%; min-width:30px;
+	height: 100%;
+	padding: 0;
+}
+.basic > .slick-prev, .responsive > .slick-prev { left:0; }
+.basic > .slick-next, .responsive > .slick-next { right:0; }
+
+/*.vertical > .slick-prev,
+.vertical > .slick-next
+{
+	position:absolute; z-index:999;
+	left:0; right:0; margin:0 auto;
+	background:rgba(150,150,150,.3);
+	width:70px; font-size:40px; line-height:50px;
+	padding:10px;
+}
+.vertical > .slick-prev { top:20px; }
+.vertical > .slick-next { bottom:20px; }*/
+

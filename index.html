@@ -1,0 +1,421 @@
+<DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="application-name" content="Madly Ambiguous">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+
+	<meta name="author" content="Ajda Gokcen">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<title>Madly Ambiguous</title>
+	
+	<!--link rel="stylesheet" href="css/jquery.mobile.css"-->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/ionicons.min.css">
+	<link rel="stylesheet" href="css/foundation-icons.css">
+	<link rel="stylesheet" href="css/slick.css">
+	<link rel="stylesheet" href="css/slick-theme.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/responsive.css">
+
+	<!--link rel="icon" href="images/ico/favicon.ico"-->
+
+	<link rel="apple-touch-icon" sizes="57x57" href="images/ico/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="images/ico/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/ico/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="images/ico/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/ico/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="images/ico/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="images/ico/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="images/ico/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="images/ico/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="images/ico/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="images/ico/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="images/ico/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="images/ico/favicon-16x16.png">
+
+	<link rel="manifest" href="/manifest.json">
+	<meta name="msapplication-TileColor" content="#FF0060">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#FF0060">
+
+</head>
+
+<body>
+	<div id="page"><div class="vertical slider">
+
+		<div class="heading">
+		<div class="link up untext clicky fullscreen" onclick="ToggleFullScreen();" title="Toggle Fullscreen"><i class="fi-arrows-out"></i></div>
+			<span id="text">
+				<span id="madly">Madly</span>
+				<br>
+				<span id="ambig">Ambiguous</span>
+			</span>
+			<br>
+			<span>A fill-in-the-blank game that teaches you about structural ambiguity
+			<br>while you try to trick a computer!</span>
+		<div class="link down untext clicky" onclick="$('.vertical').slick('slickGoTo',1);"><div>Read instructions</div></div>
+		</div> <!-- heading -->
+
+		<div class="content basic slider">
+
+			<div class="itemx">
+				<div class="speciallink untext clicky" onclick="$('.vertical').slick('slickGoTo',2);"><div>Skip instructions and play</div></div>
+				<div class="img emote" style="background-image:url('../images/photos/mrcomputerhead-grinning2.svg');"></div>
+				<br><br>Hi, I'm Mr. Computer Head!
+				<br><br>Did you know that some sentences can have more than one meaning?
+				<br><br>If you <b>swipe left</b> or click on <b>the arrow to the right</b>,
+				<br>I'll teach you more about these <b>ambiguous</b> sentences.
+				<br><br>After that, we can play a game to put your knowledge to the test.
+			</div>
+
+			<div class="itemx">
+				A sentence can be ambiguous when it has a word with multiple meanings,
+				<br>like the word "bank."
+				<br><br>If I say,
+				<br><br><span class="ex">"Jane had a picnic by the <u>bank</u>,"</span>
+				<br><br>which one of these "banks" do you picture?
+				<br><br><br>
+				<div class="caption untext">
+					<div class="img vect" style="background-image:url('../images/photos/money-bank.svg');"></div>
+					<div class="txt">Financial bank?</div>
+				</div>
+				<div class="caption untext">
+					<div class="img" style="background-image:url('../images/photos/river-bank.jpg');"></div>
+					<div class="txt">. . . or river bank?</div>
+				</div>
+			</div>
+
+			<div class="itemx">
+				In sentences like this, both meanings of "bank" are plausible.
+				<br>This is called <b>lexical ambiguity</b>.
+				<br><br>Jane might have had a picnic near the place she keeps her money,
+				<br>or she might have had a picnic by a river.
+				<br><br>If you want to know which type of bank it was, you need more information.
+				<br><br><br>
+				<div class="caption untext">
+					<div class="img vect" style="background-image:url('../images/photos/money-bank.svg');"></div>
+					<div class="txt"></div>
+				</div>
+				<div class="caption untext">
+					<div class="img" style="background-image:url('../images/photos/river-bank.jpg');"></div>
+					<div class="txt"></div>
+				</div>
+			</div>
+
+			<div class="itemx">
+				Another kind of ambiguity is called <b>structural ambiguity</b>.
+				<br><br>The confusion doesn't come from words with multiple meanings,
+				<br>but instead from different ways the parts of the sentence can be put together.
+				<br><br><br>
+				<div class="caption untext">
+					<div class="img vect" style="background-image:url('../images/photos/legos.svg');"></div>
+					<div class="txt">Same pieces . . .</div>
+				</div>
+				<div class="caption untext">
+					<div class="img vect" style="background-image:url('../images/photos/legos2.svg');"></div>
+					<div class="txt">. . . different shapes!</div>
+				</div>
+			</div>
+
+			<div class="itemx">
+				For example, if I say,
+				<br><br><span class="ex">"Jane ate spaghetti <u>with a fork</u>,"</span>
+				<br><br>you know that Jane used <b>the fork, a utensil,</b> to eat spaghetti:
+				<br>"<u>with a fork</u>" combines with "<u>ate spaghetti</u>" to tell us more about the <b>action</b>.
+				<br><br><br>
+				<div class="img" style="background-image:url('../images/photos/fork-utensil.png');"></div>
+			</div>
+
+			<div class="itemx">
+				And if I say,
+				<br><br><span class="ex">"Jane ate spaghetti <u>with meatballs</u>,"</span>
+				<br><br>you know that meatballs were instead <b>part of the spaghetti dish</b> that Jane ate:
+				<br>"<u>with meatballs</u>" combines with "<u>spaghetti</u>" to tell us more about the <b>dish</b>.
+				<br><br><br>
+				<div class="img" style="background-image:url('../images/photos/meatball-food.png');"></div>
+			</div>
+
+			<div class="itemx">
+				But how do you know that Jane didn't use the meatballs as utensils to eat the spaghetti . . .
+				<br>
+				<div class="caption untext">
+					<div class="img" style="background-image:url('../images/photos/meatball-utensil.png');"></div>
+					<div class="txt">What a mess . . .</div>
+				</div>
+				<br><br>. . . or that the fork wasn't a part of the spaghetti dish that Jane ate?
+				<br>
+				<div class="caption untext">
+					<div class="img" style="background-image:url('../images/photos/fork-food.png');"></div>
+					<div class="txt">Ouch -- that's a little TOO al dente!</div>
+				</div>
+			</div>
+
+			<div class="itemx">
+				After all, both sentences are of the same form:
+				<br><br>
+				<span class="ex">"Jane ate spaghetti with <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>."</span>
+				<br><br>And yet, without needing any other information,
+				<br>you can easily tell how the words combine into phrases,
+				<br>so that that Jane <i>ate</i> meatballs and <i>used</i> a fork.
+				<br><br>If it were the other way around, it would just be ridiculous!
+				<br><br><br>
+				<div class="caption untext">
+					<div class="img vect" style="background-image:url('../images/photos/flyingpig.jpg');"></div>
+					<div class="txt">Seems reasonable to me . . .</div>
+				</div>
+			</div>
+
+			<div class="itemx">
+				In fact, you can differentiate even more meanings of the same kind of sentence!
+				<br><br>In the sentence,
+				<br><br><span class="ex">"Jane ate spaghetti with <u>gusto</u>,"</span>
+				<br><br>you know that Jane <b>exhibited gusto</b> while she ate:
+				<br>"<u>with gusto</u>" again combines with "<u>ate spaghetti</u>" to tell us more about the <b>action</b>.
+				<br><br>This time, however, the <b>semantic role</b> is to describe the <b>manner</b> of the action
+				<br>and not the <i>instrument used</i>.
+				<br><br><br>
+				<div class="caption untext">
+					<div class="img" style="background-image:url('../images/photos/gusto.png'); background-position:45% 35%;"></div>
+					<div class="txt">What? This is my "gusto" face!</div>
+				</div>
+			</div>
+
+			<div class="itemx">
+				And if I say,
+				<br><br><span class="ex">"Jane ate spaghetti with <u>Mary</u>,"</span>
+				<br><br>you know that Mary was <b>present as Jane's companion</b> during the meal . . .
+				<br><br>. . . and <i>not</i> part of the dish!
+				<br><br><br>
+				<div class="caption untext">
+					<div class="img" style="background-image:url('../images/photos/mary-friend.png');"></div>
+					<div class="txt">One way is a nice outing . . .</div>
+				</div>
+				<div class="caption untext">
+					<div class="img" style="background-image:url('../images/photos/mary-food.png');"></div>
+					<div class="txt">. . . while the other is a very bad day for Mary.</div>
+				</div>
+				<br><br>(Much less a utensil that Jane used to eat the spaghetti, or the way Jane acted while eating.)
+			</div>
+
+			<div class="itemx">
+				Not to mention, it probably didn't even occur to you that
+				<br>the sentences about <b><u>a fork</u></b> or <b><u>meatballs</u></b> could mean
+				<br>those items were Jane's mealtime companions!
+				<br><br><br>
+				<div class="caption untext">
+					<div class="img" style="background-image:url('../images/photos/fork-friend.png');"></div>
+					<div class="txt">Nothing like a nice meal with my dear friends, Fork . . .</div>
+				</div>
+				<div class="caption untext">
+					<div class="img" style="background-image:url('../images/photos/meatball-friend.png');"></div>
+					<div class="txt">. . . and Meatball.</div>
+				</div>
+			</div>
+
+			<div class="itemx">
+				For a person like you, it's easy to see what these sentences really mean.
+				<br><br>It couldn't be more obvious that a fork is a utensil and a meatball is a food,
+				<br>so you know which way of combining the sentences makes sense!
+				<br><br><br>
+				<div class="caption untext">
+					<div class="img" style="background-image:url('../images/photos/graduate.png');"></div>
+					<div class="txt">Well, aren't you smart!</div>
+				</div>
+			</div>
+
+			<div class="itemx">
+				<div class="img emote" style="background-image:url('../images/photos/mrcomputerhead-pensive2.svg');"></div>
+				<br><br>As smart as computers are getting,
+				<br>most of us aren't very good at figuring out which interpretations make sense
+				<br>. . . and which don't.
+				<br><br>It takes a lot of work for a computer to figure out
+				<br>why some interpretations are just too ridiculous to be possible.
+			</div>
+
+			<div class="itemx">
+				<div class="img emote" style="background-image:url('../images/photos/mrcomputerhead-wink2.svg');"></div>
+				<br><br>But I'm no ordinary computer.
+				<br><br>I know that you use forks and eat meatballs, not the other way around!
+			</div>
+
+			<div class="itemx">
+				<div class="img emote" style="background-image:url('../images/photos/mrcomputerhead-relieved2.svg');"></div>
+				<br><br>Now that you know a bit about structural (and semantic) ambiguity,
+				<br>see if you can beat me in a round of <b>Madly Ambiguous</b>!
+				<br><br>All you have to do is come up with a word to complete an ambiguous sentence,
+				<br>and then I'll take my best guess at the correct meaning of the sentence.
+			</div>
+
+			<div class="itemx">
+				<div class="img emote" style="background-image:url('../images/photos/mrcomputerhead-grinning2.svg');"></div>
+				<br><br>Do you think you can come up with a sentence that will stump me?
+				<br><br>I'd like to see you try!
+				<br><br><button class="big btn" onclick="$('.vertical').slick('slickGoTo',2);">Begin</button>
+				<br><button class="btn" onclick="$('.basic').slick('slickGoTo',0);">Read instructions again</button>
+			</div>
+
+		</div> <!-- content/slider -->
+
+		<div class="content">
+			Complete the following sentence
+			<br>with a <b>noun</b> like "<u>meatballs</u>"
+			<br>or a <b>noun phrase</b> like "<u>a silver fork</u>."
+			<br><br><br><br>
+			<span class="ex" id="sent">Jane ate spaghetti with 
+			<div class="input-widget">
+				<span class="input-box" contenteditable=true></span>
+				<button class="btn input-enter"><i class="fa fa-check"></i></button>
+				<button class="btn input-clear"><i class="fa fa-times"></i></button>
+			</div>.
+			</span>
+			<div class="link down untext clicky" onclick="$('.vertical').slick('slickGoTo',1);"><div>Read instructions again</div></div>
+		</div> <!-- content -->
+
+		<div class="content">
+			<canvas id="canvas" width="0" height="0"></canvas>
+			I think that
+			<br><br>
+			<span class="ex"><i>"Jane ate spaghetti with <span class="blank">a fork</span>,"</i></span>
+			<br><br>
+			means
+			<br><br>
+			<span class="ex"><b>"<span class="guess">Jane used <span class="blank">a fork</span> to eat spaghetti.</span>"</b></span>
+			<br><br>
+			Am I right?
+			<br><br>
+
+			<div class="slider responsive">
+				<div class="opt utensil compsel untext clicky" tabindex=0>
+					<div class="txt">Yes,</div>
+					<div class="img"></div>
+					<div class="txt">Jane used <span class="blank">a fork</span> to eat spaghetti.</div>
+				</div>
+				<div class="opt food untext clicky" tabindex=0>
+					<div class="txt">No,</div>
+					<div class="img"></div>
+					<div class="txt">Jane had spaghetti and <span class="blank">a fork</span>.</div>
+				</div>
+				<div class="opt manner untext clicky" tabindex=0>
+					<div class="txt">No,</div>
+					<div class="img"></div>
+					<div class="txt">Jane exhibited <span class="blank">a fork</span> while eating spaghetti.</div>
+				</div>
+				<div class="opt company untext clicky" tabindex=0>
+					<div class="txt">No,</div>
+					<div class="img"></div>
+					<div class="txt">Jane ate spaghetti in the presence of <span class="blank">a fork</span>.</div>
+				</div>
+				<div class="opt none untext clicky" tabindex=0>
+					<div class="txt">No,</div>
+					<div class="img"></div>
+					<div class="txt">none of these options are correct.</div>
+				</div>
+			</div>
+
+		</div> <!-- content -->
+
+		<div class="content">
+			<span class="stats"></span>
+			<br><br><button class="big btn" onclick="$('.vertical').slick('slickGoTo',2);">Play again?</button>
+			<br><button class="btn" onclick="$('.vertical').slick('slickGoTo',5);">Find out how it's done</button>
+			<br><button class="btn" onclick="$('.vertical').slick('slickGoTo',6);">Quit</button>
+		</div> <!-- content -->
+
+		<div class="content basic slider">
+
+			<div class="itemx">
+				<div class="img emote" style="background-image:url('../images/photos/mrcomputerhead-grinning2.svg');"></div>
+				<br><br>In order to figure out what your sentence means,
+				<br>I have to take a few steps.
+			</div>
+
+			<div class="itemx">
+				<div class="img emote" style="background-image:url('../images/photos/mrcomputerhead-grinning2.svg');"></div>
+				<br><br>First, if you give me a noun phrase with multiple words,
+				<br>I have to figure out which words are important.
+			</div>
+
+			<div class="itemx">
+				<div class="img emote" style="background-image:url('../images/photos/mrcomputerhead-grinning2.svg');"></div>
+				<br><br>If you give me a phrase like "<u>a silver fork</u>,"
+				<br>I just need to look at the noun "fork."
+			</div>
+
+			<div class="itemx">
+				<div class="img emote" style="background-image:url('../images/photos/mrcomputerhead-grinning2.svg');"></div>
+				<br><br>But I have to be careful with phrases like "<u>a bunch of meatballs</u>,"
+				<br>where both "bunch" and "meatballs" are nouns.
+				<br><br>In this case, I know that "meatballs" is the most important noun.
+			</div>
+
+			<div class="itemx">
+				<div class="img emote" style="background-image:url('../images/photos/mrcomputerhead-grinning2.svg');"></div>
+				<br><br>Once I pick out the most important noun,
+				<br>I look up the word in <b>WordNet</b>,
+				<br>which is like a very detailed thesaurus.
+			</div>
+
+			<div class="itemx">
+				<div class="img emote" style="background-image:url('../images/photos/mrcomputerhead-grinning2.svg');"></div>
+				<br><br>If my search tells me that the noun is a kind of <b>tool</b>, <b>food</b>, or <b>trait</b>,
+				<br>I have my answer.
+				<br><br>If the noun isn't related to any of those things,
+				<br>I assume that the sentence must be talking about Jane's company as she eats.
+			</div>
+
+			<div class="itemx">
+				<div class="img emote" style="background-image:url('../images/photos/mrcomputerhead-pensive2.svg');"></div>
+				<br><br>You might notice that my strategy is pretty specific
+				<br>to this one kind of sentence and situation.
+				<br><br>Well, it's true -- I would have to make a completely new strategy
+				<br>if I wanted to be able to understand ambiguity in a new sentence!
+				<br><br>Even a smart computer like me has a pretty long way to go
+				<br>before I'm as good at figuring out ambiguity as humans are.
+			</div>
+
+			<div class="itemx">
+				<div class="img emote" style="background-image:url('../images/photos/mrcomputerhead-wink2.svg');"></div>
+				<br><br>But that's how I play <b>Madly Ambiguous</b>!
+				<br><br>Maybe now that you know my secrets,
+				<br>you have some new ideas on how to stump me.
+				<br><br>Do you want to play another round?
+				<br><br><button class="big btn" onclick="$('.vertical').slick('slickGoTo',2);">Play again?</button>
+				<br><button class="btn" onclick="$('.basic').slick('slickGoTo',0);">Read explanation again</button>
+				<br><button class="btn" onclick="$('.vertical').slick('slickGoTo',6);">Quit</button>
+			</div>
+
+		</div> <!-- content/slider -->
+
+		<div class="heading" style="font-variant:small-caps; padding-top:20vh;">
+			<div class="link up untext clicky fullscreen" style="width:350px;" onclick="InitDocument();">Start over</div>
+			<span style="font-weight:900; color:#FF0060;">Madly</span><span style="font-weight:100;">Ambiguous</span>
+			<br><br>Copyright 2016
+			<br><br><br><br>Madly Ambiguous was created through the combined efforts of Ajda Gokcen, Ethan Hill, and Michael White,
+			<br>and funded through NSF Grant 1319318.
+			<br><br><div class="img emote" style="background-image:url('../images/photos/nsf.svg');"></div>
+			<br><br>Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s)
+			<br>and do not necessarily reflect the views of the National Science Foundation.
+		</div> <!-- heading -->
+
+	</div></div> <!-- page -->
+
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="js/jquery.cookie.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/highlight.pack.js"></script>
+	<script src="js/screenfull.js"></script>
+	<script src="js/slick.js"></script>
+	<script src="js/canvas.js"></script>
+	<script src="js/main.js"></script>
+	<!--[if (gte IE 6)&(lte IE 8)]>
+		<script type="text/javascript" src="js/selectivizr.js"></script>
+	<![endif]-->
+</body>
+</html>

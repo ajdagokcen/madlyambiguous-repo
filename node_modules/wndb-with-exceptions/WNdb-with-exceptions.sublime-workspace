@@ -1,0 +1,437 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"syn",
+				"synsetOffset"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/JSLint/JSLint.sublime-build",
+	"command_palette":
+	{
+		"height": 287.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 575.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/stuart/git/email/src/service/lib/analysis/sense-disambiguation_test.coffee",
+		"/Users/stuart/git/email/src/service/lib/analysis/wordnet_test.coffee",
+		"/Users/stuart/git/email/src/scripts/load.coffee",
+		"/Users/stuart/git/email/etc",
+		"/Users/stuart/git/morungos-landing/src/app/demo/demo.coffee",
+		"/Users/stuart/git/morungos-landing/config.json",
+		"/Users/stuart/git/morungos-landing/src/app/index.html",
+		"/Users/stuart/git/morungos-landing/src/service/main.coffee",
+		"/Users/stuart/git/morungos-landing/src/app/auth/auth.coffee",
+		"/Users/stuart/git/morungos-landing/src/app/auth/auth-services.coffee",
+		"/Users/stuart/git/morungos-landing/src/app/auth/auth-controller.coffee",
+		"/Users/stuart/git/morungos-landing/src/app/app.coffee",
+		"/Users/stuart/git/morungos-landing/src/service/lib/configuration.coffee",
+		"/Users/stuart/git/morungos-landing/src/service/lib/survey-router.coffee",
+		"/Users/stuart/git/morungos-landing/src/service/lib/analysis-router.coffee",
+		"/Users/stuart/git/morungos-landing/.tmp/src/service/lib/application.js",
+		"/Users/stuart/git/morungos-landing/src/service/lib/authentication.coffee",
+		"/Users/stuart/git/morungos-landing/src/service/lib/application.coffee",
+		"/Users/stuart/git/morungos-landing/src/app/app.scss",
+		"/Users/stuart/git/morungos-landing/src/app/styles/_survey.scss",
+		"/Users/stuart/git/morungos-landing/.tmp/css/app.css",
+		"/Users/stuart/git/morungos-landing/package.json",
+		"/Users/stuart/git/morungos-landing/bower.json",
+		"/Users/stuart/git/morungos-landing/src/service/lib/auth-router.coffee",
+		"/Users/stuart/git/morungos-landing/inventory.ini",
+		"/Users/stuart/git/morungos-landing/roles/webserver/templates/nginx-config.j2",
+		"/Users/stuart/git/morungos-landing/roles/webserver/tasks/main.yml",
+		"/Users/stuart/git/morungos-landing/src/service/sentence-splitter.coffee",
+		"/Users/stuart/git/morungos-landing/src/service/data/special_tokens.json",
+		"/Users/stuart/git/morungos-landing/src/service/data/override_types.json",
+		"/Users/stuart/git/morungos-landing/src/service/token-classifier.coffee",
+		"/Users/stuart/git/morungos-landing/src/service/skimmer_test.coffee",
+		"/Users/stuart/git/morungos-landing/src/service/skimmer.coffee",
+		"/Users/stuart/git/morungos-landing/src/service/token-classifier_test.coffee",
+		"/Users/stuart/git/morungos-landing/src/service/sentiment_test.coffee",
+		"/Users/stuart/git/morungos-landing/src/service/sentiment.coffee",
+		"/Users/stuart/git/morungos-landing/src/service/analysis.coffee",
+		"/Users/stuart/git/morungos-landing/src/app/sandbox/sandbox.html",
+		"/Users/stuart/git/morungos-landing/src/app/styles/_base.scss",
+		"/Users/stuart/git/morungos-landing/src/service/data/afinn.json",
+		"/Users/stuart/git/morungos-landing/src/service/data/token_types.json",
+		"/Users/stuart/git/morungos-landing/src/service/analysisService.coffee",
+		"/Users/stuart/git/morungos-landing/gulpfile.js",
+		"/Users/stuart/git/morungos-landing/morungos-landing.sublime-project",
+		"/Users/stuart/git/morungos-landing/src/service/skimmer-test.coffee",
+		"/Users/stuart/git/morungos-landing/src/service/token_classifier_test.coffee",
+		"/Users/stuart/git/morungos-landing/src/service/token_classifier.coffee",
+		"/Users/stuart/git/morungos-landing/src/service/data/sorted.json",
+		"/Users/stuart/git/morungos-landing/src/service/data/lexicon.json",
+		"/Users/stuart/git/morungos-landing/src/service/sentence-splitter_test.coffee",
+		"/Users/stuart/git/morungos-landing/src/service/analysis_test.coffee",
+		"/Users/stuart/git/morungos-landing/src/app/survey/survey-directives.coffee",
+		"/Users/stuart/git/morungos-landing/src/app/survey/survey.coffee",
+		"/Users/stuart/git/morungos-landing/src/app/survey/survey-services.coffee",
+		"/Users/stuart/git/morungos-landing/src/app/survey/survey-controller.coffee",
+		"/Users/stuart/git/morungos-landing/src/app/survey/survey.html",
+		"/Users/stuart/git/morungos-landing/src/service/survey.coffee",
+		"/Users/stuart/Downloads/verifyforzoho.html",
+		"/Users/stuart/git/morungos-landing/src/app/survey/survey.page.html",
+		"/Users/stuart/git/morungos-landing/bower_components/bootstrap-css-only/css/bootstrap.css",
+		"/Users/stuart/git/morungos-landing/src/app/header/header.coffee",
+		"/Users/stuart/git/morungos-landing/.gitignore",
+		"/Users/stuart/git/morungos-landing/src/app/todo/todo.scss",
+		"/Users/stuart/git/morungos-landing/bower_components/bootstrap/less/labels.less",
+		"/Users/stuart/git/morungos-landing/bower_components/angular/angular.js",
+		"/Users/stuart/git/morungos-landing/.tmp/index.html",
+		"/Users/stuart/git/morungos-landing/src/app/header/home.coffee",
+		"/Users/stuart/git/morungos-landing/src/app/todo/todo-controller_test.coffee",
+		"/Users/stuart/git/morungos-landing/karma.conf.js",
+		"/Users/stuart/git/morungos-landing/src/app/todo/todo.coffee",
+		"/Users/stuart/git/morungos-landing/src/app/todo/todo-controller.coffee",
+		"/Users/stuart/git/morungos-landing/src/app/home/home.html",
+		"/Users/stuart/git/morungos-landing/src/app/home/home.coffee",
+		"/Users/stuart/git/morungos-landing/src/app/home/home-controller.coffee",
+		"/Users/stuart/git/morungos-landing/src/app/header/header-controller.coffee",
+		"/Users/stuart/git/capsid-vagrant/roles/webapp/templates/nginx-service.js",
+		"/Volumes/SSD/RevisedEDRMv1_Complete/albert_meyers/Personal folders/meyers-a/ExMerge - Meyers, Albert/Deleted Items/mbox",
+		"/Users/stuart/git/capsid-webapp/capsid-webapp-app/grails-app/controllers/ca/on/oicr/capsid/SampleController.groovy",
+		"/Users/stuart/git/capsid-webapp/capsid-webapp-app/grails-app/controllers/ca/on/oicr/capsid/BrowseController.groovy",
+		"/Users/stuart/git/capsid-webapp/capsid-webapp-app/grails-app/conf/DataSource.groovy",
+		"/Users/stuart/git/capsid-webapp/capsid-webapp-app/grails-app/views/layouts/_genomeFilter.gsp",
+		"/Users/stuart/git/capsid-webapp/capsid-webapp-app/grails-app/views/layouts/_filter.gsp",
+		"/Users/stuart/git/capsid-webapp/capsid-webapp-app/grails-app/services/ca/on/oicr/capsid/StatsService.groovy",
+		"/Users/stuart/git/capsid-webapp/capsid-webapp-app/grails-app/controllers/LoginController.groovy",
+		"/Users/stuart/git/capsid-webapp/capsid-webapp-app/grails-app/views/layouts/bootstrap.gsp",
+		"/Users/stuart/git/capsid-webapp/capsid-webapp-app/grails-app/views/login/denied.gsp",
+		"/Users/stuart/git/capsid-webapp/capsid-webapp-app/grails-app/conf/Config.groovy",
+		"/Users/stuart/git/capsid-webapp/capsid-webapp.sublime-project",
+		"/Users/stuart/git/capsid-webapp/capsid-webapp-httpd/src/main/conf/capsid.xml",
+		"/Users/stuart/git/capsid-webapp/.gitignore",
+		"/Users/stuart/git/morungos/index.html",
+		"/Users/stuart/git/openmentor-grails/grails-app/domain/uk/org/openmentor/courseinfo/Student.groovy",
+		"/Users/stuart/git/openmentor-grails/grails-app/domain/uk/org/openmentor/courseinfo/Tutor.groovy",
+		"/Users/stuart/git/openmentor-grails/grails-app/domain/uk/org/openmentor/data/Submission.groovy",
+		"/Users/stuart/git/openmentor-grails/grails-app/controllers/uk/org/openmentor/controller/CourseController.groovy",
+		"/Users/stuart/git/openmentor-grails/grails-app/services/uk/org/openmentor/service/CourseInfoService.groovy",
+		"/Users/stuart/git/openmentor-grails/pom.xml",
+		"/Users/stuart/git/openmentor-grails/grails-app/domain/uk/org/openmentor/config/Grade.groovy",
+		"/Users/stuart/git/openmentor-grails/test/unit/uk/org/openmentor/service/BulkUploadServiceTests.groovy",
+		"/Users/stuart/git/openmentor-grails/grails-app/services/uk/org/openmentor/service/AnalyzerService.groovy",
+		"/Users/stuart/git/openmentor-grails/grails-app/controllers/uk/org/openmentor/controller/AssignmentController.groovy",
+		"/Users/stuart/git/openmentor-grails/grails-app/domain/uk/org/openmentor/courseinfo/Assignment.groovy",
+		"/Users/stuart/git/openmentor-grails/.gitignore",
+		"/Users/stuart/git/openmentor-grails/grails-app/conf/BuildConfig.groovy",
+		"/Users/stuart/git/openmentor-grails/grails-app/conf/BootStrap.groovy",
+		"/Users/stuart/git/openmentor-grails/test/integration/uk/org/openmentor/controller/TutorControllerIntegrationTests.groovy",
+		"/Users/stuart/git/openmentor-grails/test/integration/uk/org/openmentor/controller/StudentControllerIntegrationTests.groovy",
+		"/Users/stuart/git/openmentor-grails/README.md",
+		"/Users/stuart/git/openmentor-grails/openmentor-grails.sublime-project",
+		"/Users/stuart/git/dedication/tasks.md",
+		"/Users/stuart/git/dedication/lib/schedule.js",
+		"/Users/stuart/git/dedication/lib/lyrics.js",
+		"/Users/stuart/git/dedication/public/partials/play.html",
+		"/Users/stuart/git/dedication/app.js",
+		"/Users/stuart/git/dedication/lib/admin.js",
+		"/Users/stuart/git/dedication/lib/service.js",
+		"/Users/stuart/git/dedication/lib/main.js",
+		"/Users/stuart/git/dedication/public/partials/home.html",
+		"/Users/stuart/git/dedication/public/coffee/app.coffee",
+		"/Users/stuart/git/dedication/public/coffee/controllers.coffee",
+		"/Users/stuart/git/dedication/public/coffee/directives/media.coffee",
+		"/Users/stuart/git/dedication/public/css/popcorn.text.css",
+		"/Users/stuart/git/dedication/public/partials/admin.html",
+		"/Users/stuart/git/dedication/.gitignore",
+		"/Users/stuart/git/dedication/package.json",
+		"/Users/stuart/git/dedication/public/partials/admin_order.html",
+		"/Users/stuart/git/dedication/public/coffee/directives/core.coffee",
+		"/Users/stuart/git/dedication/public/data/video.json"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"/Users/stuart/git/email/node_modules/natural/spec",
+			"/Users/stuart/git/email/src",
+			"/Users/stuart/git/morungos-landing",
+			"/Users/stuart/git/morungos-landing/bower_components",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			" ",
+			"}\n",
+			"logger",
+			"wordnet",
+			"advData",
+			"\\t",
+			"undef",
+			"message-panel",
+			"message-pane",
+			"brand-s",
+			"link",
+			"body",
+			"a {",
+			"#428bc",
+			"margin-left",
+			"external",
+			"console",
+			"xample.com>",
+			"<bob",
+			"<joe",
+			"<bill",
+			"demo-message-body",
+			".label",
+			"dimensions",
+			"260px",
+			"app",
+			".clean",
+			"undefined",
+			"scss",
+			"less",
+			"statiscs",
+			"mainBowerFiles",
+			"bowerFile",
+			"bower",
+			"json",
+			"console.log",
+			"'Linking'",
+			"\"Linking\"",
+			"templates",
+			"templ",
+			"(\\w+)",
+			"'",
+			"([A-Z| ]+)$",
+			"\\|[A-z ]+$",
+			"\"'",
+			"'\"",
+			"\"\"",
+			"^([^ ]+)[ ]",
+			"\"hate",
+			"\"kick",
+			"\\\\",
+			"\\],",
+			"^([^\"]\\w*):",
+			":(\\d+),",
+			"analyze",
+			"([A-za-z]+)",
+			"\\w+",
+			"assert.equal ",
+			"split",
+			"clean",
+			"countWords",
+			"config",
+			"carousel",
+			"carousel-control",
+			"\\9",
+			"inject",
+			"morungosLanding",
+			"landing",
+			"home",
+			"asset",
+			"hgroup",
+			"clean",
+			"text-decoration",
+			"coffee",
+			"/usr/share",
+			"unzip",
+			"conf.master.tar",
+			"statsService.list",
+			".error(",
+			"alert",
+			"Histogram",
+			"ca.on.oicr.capsid.browse",
+			"user.",
+			"jetty.version",
+			"user.",
+			"sec",
+			"username",
+			"debug",
+			"resourceOpener",
+			"setResourceOpener",
+			"newSubmission",
+			"Student",
+			"initializeCourse",
+			"bulkUploadService",
+			"BulkUploadService",
+			"content",
+			"fork",
+			"2.2.1",
+			"'}\n",
+			"emailCount",
+			"linkUrl",
+			"fontDecorations",
+			"'text'",
+			"\"text",
+			"fixed",
+			"random",
+			"left",
+			"custom",
+			"{ text:",
+			")},",
+			", \", ",
+			"action:",
+			"text:",
+			"getDedicationCaptions",
+			"getQueryId",
+			"service/dedications",
+			"getDedicationVideo",
+			"\"Searching\"",
+			"alert(",
+			"email",
+			"HomeController",
+			"dl-horizontal",
+			"“",
+			".con",
+			"timeline-sources",
+			"data-timeline",
+			"transition",
+			"}"
+		],
+		"highlight": true,
+		"in_selection": true,
+		"preserve_case": true,
+		"regex": true,
+		"replace_history":
+		[
+			"|",
+			"  ",
+			"xample.com&gt;",
+			"&lt;bob",
+			"&lt;joe",
+			"&lt;bill",
+			"\"\\1\"",
+			"\"",
+			"[\\1]",
+			"\"\\1\":",
+			"],\\n",
+			"\"\\1\":",
+			":\\1,\\n",
+			"\"\\1\"",
+			"Tutor",
+			"}),",
+			", ",
+			"\"",
+			"",
+			"'stroke': 'none',",
+			"",
+			"\\n  {\"name\"",
+			"\"name\"",
+			"\"names\"",
+			"\"}, ",
+			"{name: \"",
+			"",
+			"{name: \""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/Users/stuart/workspace/dedication/project.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 380.0,
+	"status_bar_visible": true
+}
