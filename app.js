@@ -186,7 +186,7 @@ io.on('connection', function (socket) {
 		var uname = socketsOfClients[socket.id];
 		if (data.length > 0 && data[0] !== undefined && data[0] != '') {
 
-			var words = new pos.Lexer().lex(data[0]);
+			var words = new pos.Lexer().lex(data[0].toLowerCase());
 			var tagger = new pos.Tagger();
 			var taggedWords = tagger.tag(words);
 			/*for (i in taggedWords) {
