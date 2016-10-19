@@ -184,7 +184,7 @@ io.on('connection', function (socket) {
 
 	socket.on('RequestParse', function(data) {
 		var uname = socketsOfClients[socket.id];
-		if (data.length > 0 && data[0] !== undefined && data[0] != '')
+		if (data.length > 0 && data[0] !== undefined && data[0] != '') {
 
 			var words = new pos.Lexer().lex(data[0]);
 			var tagger = new pos.Tagger();
@@ -218,13 +218,6 @@ io.on('connection', function (socket) {
 					variants = variants.concat(mn).concat(ln);
 					//console.log(variants)
 
-					//TODO: drinks? manner/mood nouns? possibility of MWEs? possessives where unit isn't root?
-					// "Jane had spaghetti and {wine/soda/tea/beer/etc.}."
-					// "Jane exhibited {gusto/enthusiasm/haste/etc.} in eating spaghetti."
-					// "Jane ate spaghetti with chicken wings."
-					// "Jane ate spaghetti with a whole lot of (piles of) meatballs."
-					// "Jane ate spaghetti with a whole bunch of plates full of chicken wings."
-					// with time, with her hat on
 					var found = false;
 					for (var i=0; i<variants.length; i++) {
 						if (wn.food.indexOf(variants[i]) >= 0) {
@@ -244,7 +237,7 @@ io.on('connection', function (socket) {
 
 			} else socket.emit('ReturnWN','company');
 			//} else socket.emit('ReturnWN','none');
-
+		}
 	});
 
 	socket.on('SaveResults', function(data) {
