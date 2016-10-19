@@ -13,12 +13,12 @@ The issue seems not to be limited to "click" events, as was originally suspected
 - (everything else)
 
 **Failed attempts to fix the issue include:**
-1. adding `cursor: pointer;` to the CSS for the elements that need to be clicked
-2. adding an `onClick=""` attribute in the html declaration for the elements that need to be clicked
-3. using a "tap" event instead of / in addition to a "click" event
-4. various mobile event JavaScript/jQuery extensions: `fastclick.js`, `ios.js`, `jquery-mobile-events.js`
+- adding `cursor: pointer;` to the CSS for the elements that need to be clicked
+- adding an `onClick=""` attribute in the html declaration for the elements that need to be clicked
+- using a "tap" event instead of / in addition to a "click" event
+- various mobile event JavaScript/jQuery extensions: `fastclick.js`, `ios.js`, `jquery-mobile-events.js`
 
 **Unexplored paths that could lead to fixing the issue:**
-1. Event bindings from 3rd party extensions such as Bootstrap might be working? Unclear; but if so, then perhaps the issue is something about the way `js/main.js` is written.
-2. The issue could be with dynamic elements and binding events to them, although the current event binding code is specifially written to circumvent that, and most elements do exist in the base HTML (index.html), so they shouldn't be considered dynamic.  There may be some interaction with the node.js backend that causes the elements to be handled oddly on iOS.
+- Event bindings from 3rd party extensions such as Bootstrap might be working? Unclear; but if so, then perhaps the issue is something about the way `js/main.js` is written.
+- The issue could be with dynamic elements and binding events to them, although the current event binding code is specifially written to circumvent that, and most elements do exist in the base HTML (index.html), so they shouldn't be considered dynamic.  There may be some interaction with the node.js backend that causes the elements to be handled oddly on iOS.
 
