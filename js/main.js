@@ -46,7 +46,7 @@ $(document).ready(function() {
 		$('.guess').empty();
 		$('.guess').append(guess);
 
-		var inputtext = $('.input-widget').children('.input-box').text();
+		var inputtext = $('#txtphrase').val();
 		$('.blank').text(inputtext);
 		$('.blank.capital').text(inputtext.charAt(0).toUpperCase()+inputtext.slice(1));
 
@@ -84,7 +84,8 @@ function GetRandomElem(l) {
 
 //TODO: get this working on iOS...
 $(document).on(click,'.input-enter',function(event) {
-	var inputtext = $(this).closest('.input-widget').children('.input-box').text();
+
+	var inputtext = $('#txtphrase').val();
 	$('.blank').text(inputtext);
 	$('.blank.capital').text(inputtext.charAt(0).toUpperCase()+inputtext.slice(1));
 	if (inputtext.trim() != '') {
@@ -95,10 +96,10 @@ $(document).on(click,'.input-enter',function(event) {
 });
 
 $(document).on(click,'.input-clear',function(event) {
-	$(this).parent().children('.input-box').text('');
+	$('#txtphrase').val('');
 });
 
-$(document).on('keydown','.input-box',function(event) {
+$(document).on('keydown','#txtphrase',function(event) {
 	if (event.keyCode === 13) {
 		event.preventDefault();
 		$('.input-enter').click();
@@ -269,4 +270,15 @@ $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange MSFu
 	}
 });
 
+function resizeInput() {
 
+	var l = $(this).val().length >= 15 ? $(this).val().length : 15;
+
+    $(this).attr('size', l + 3);
+}
+
+$('#txtphrase')
+    // event handler
+    .keyup(resizeInput)
+    // resize on page load
+    .each(resizeInput);
