@@ -67,14 +67,24 @@
 				<div class="speciallink untext clicky" onclick="$('.vertical').slick('slickGoTo',2);"><div>Skip instructions and play</div></div>
 				<div class="img emote" style="background-image:url('../images/photos/mrcomputerhead-grinning2.svg');"></div>
 				<br><br>Hi, I'm Mr. Computer Head!
-				<br><br>Did you know that some sentences can have more than one meaning?
+				<!--<br> Computers have a hard time understanding things that are easy for humans.-->
+				<!--<br><br>Did you know that some sentences can have more than one meaning?-->
+				<!--<br> It would be really neat if we could make computers understand sentences as easily as humans do.-->
+				<br><br>More and more these days, people are interacting with computers through human language.
+				<br>For example, my talkative friends Alexa, Cortana and Siri have become quite popular.
+				<br>But did you know that computers can have a very hard time understanding things that are easy for humans?
+				<br><br>What is particularly tough for computers is <i>ambiguity</i>.
 				<br><br>If you <b>swipe left</b> or click on <b>the arrow to the right</b>,
-				<br>I'll teach you more about these <b>ambiguous</b> sentences.
-				<br><br>After that, we can play a game to put your knowledge to the test.
+				<br>I'll teach you about <b>ambiguous</b> sentences.
+				<br><br>After that, we can play a game where I try to guess what <b>you</b> mean by some ambiguous sentences!
 			</div>
 
 			<div class="itemx">
-				A sentence can be ambiguous when it has a word with multiple meanings,
+				<!--<div class="img emote" style="background-image:url('../images/photos/mrcomputerhead-grinning2.svg');"></div>-->
+				<br>A sentence is <b>ambiguous</b> if it has more than one possible meaning.
+				<br>For a person, figuring out which meaning of an ambiguous sentence is intended is kid stuff.
+				<br>Not so for computers though!
+				<br><br>A sentence can be ambiguous when it has a word with multiple meanings,
 				<br>like the word "bank."
 				<br><br>If I say,
 				<br><br><span class="ex">"Jane had a picnic by the <u>bank</u>,"</span>
@@ -139,6 +149,23 @@
 				<br><br><br>
 				<div class="img" style="background-image:url('../images/photos/meatball-food.png');"></div>
 			</div>
+
+			<!--<div class="gifstyle">-->
+            <div class="itemx">
+				These two sentences have different <b>syntactic structures</b>.
+				<br>One way to show the structure of a sentence is to use arrows to indicate how words combine into phrases:
+                <center>
+                    <!--<img src="../images/photos/gif-corrected.gif" width="65%", height="65%"/>-->
+					<!--<img src="../images/photos/simpleverb.png"/>-->
+					<!--<br><br>-->
+					<!--<img src="../images/photos/simplenoun.png"/>-->
+					<img src="../images/photos/simpleslides.gif" width="800px"/>
+					<!--<div class="img" style="background-image:url('../images/photos/simpleslides.gif');"></div>-->
+				</center>
+				<!--<br><br>We want to know whether "<u>with meatballs</u>" modifies the noun "<u>spaghetti</u>" or the verb "<u>ate</u>".-->
+				<br><br>As we’ve noted, “with a fork” combines with “ate spaghetti” to tell us more about the action, while “with meatballs” combines with “spaghetti” to tell us more about the dish.
+			<!--<br><br><button class="big btn" onclick="$('.vertical').slick('slickGoTo',4);">I'm ready to start!</button>-->
+			</div> <!-- content -->
 
 			<div class="itemx">
 				But how do you know that Jane didn't use the meatballs as utensils to eat the spaghetti . . .
@@ -217,6 +244,16 @@
 				</div>
 			</div>
 
+            <div class="itemx">
+                <!--A computer would have to figure out the syntactic structure <u>and</u> the semantic role.-->
+				So, to determine the <b>intended</b> meaning out of all these possible ones, a computer would have to figure out the right syntactic structure <i>and</i> the right semantic role:
+				<br><br>
+				<center>
+                    <img src="../images/photos/labelled.gif" height="167px" width="800px"/>
+                </center>
+				<!--<br><br>One way of describing these relationships is <b><a href="https://framenet.icsi.berkeley.edu/fndrupal/">FrameNet</a></b>.-->
+			</div>
+
 			<div class="itemx">
 				For a person like you, it's easy to see what these sentences really mean.
 				<br><br>It couldn't be more obvious that a fork is a utensil and a meatball is a food,
@@ -276,6 +313,7 @@
 			<div class="link down untext clicky" onclick="$('.vertical').slick('slickGoTo',1);"><div>Read instructions again</div></div>
 		</div> <!-- content -->
 
+
 		<div class="content">
 			<canvas id="canvas" width="0" height="0"></canvas>
 			I think that
@@ -316,7 +354,7 @@
 					<div class="txt">none of these options are correct.</div>
 				</div>
 			</div>
-
+			<i>(scroll left or right for more options)</i>
 		</div> <!-- content -->
 
 		<div class="content">
@@ -353,17 +391,46 @@
 				<br><br>In this case, I know that "meatballs" is the most important noun.
 			</div>
 
+			<!--<div class="itemx">-->
+				<!--<div class="img emote" style="background-image:url('../images/photos/mrcomputerhead-grinning2.svg');"></div>-->
+				<!--<br><br>I find the most important noun by first looking for the last preposition.-->
+				<!--<br> Then I look for the last noun or the first combination of an adjective followed by a noun.-->
+				<!--<br><br> That's how in a phrase like "<u>a bunch of meatballs</u>" I know "meatballs" is the more important than "bunch".-->
+			<!--</div>-->
+
 			<div class="itemx">
 				<div class="img emote" style="background-image:url('../images/photos/mrcomputerhead-grinning2.svg');"></div>
 				<br><br>Once I pick out the most important noun,
-				<br>I look up the word in <b>WordNet</b>,
+				<!-- <br>I look up the word in <b>WordNet</b>,
+	    			adding wordnet hyperline 
+				11/16 update - It is a hyperlink, but something isn't making it active/responsive 
+				TODO hyperlink, or just bold? Or nothing? -->
+				<br>I look up the word in <b><a href="https://wordnet.princeton.edu/">WordNet</a></b>,
 				<br>which is like a very detailed thesaurus.
 			</div>
 
 			<div class="itemx">
+				<!--<div class="img emote" style="background-image:url('../images/photos/mrcomputerhead-grinning2.svg');"></div>-->
+				<!--<div class="img emote" style="background-image:url('../images/photos/tree.png');"></div>-->
+				<center>
+					<img src="../images/photos/tree.svg" width="50%"/>
+				</center>
+				<br><br><a href="https://wordnet.princeton.edu/">WordNet</a></b> is a special kind of thesaurus,
+				<br>which tells me what kinds of words I'm looking at.
+				<br><br>In WordNet, not only are synonyms grouped together (e.g. “zest” and “gusto”), but words are also linked with more general and more specific words (e.g. “meatballs” are a particular kind of “dish”).
+				<br><br>
+				<!--<div class="caption untext">-->
+					<!--<div class="img vect" style="background-image:url('../images/photos/tree.png');"></div>-->
+					<!--<div class="txt">Same pieces . . .</div>-->
+				<!--</div>-->
+			</div>
+
+
+			<div class="itemx">
 				<div class="img emote" style="background-image:url('../images/photos/mrcomputerhead-grinning2.svg');"></div>
-				<br><br>If my search tells me that the noun is a kind of <b>tool</b>, <b>food</b>, or <b>trait</b>,
-				<br>I have my answer.
+				<!--<br><br>If my search in <b><a href="https://wordnet.princeton.edu/">WordNet</a></b> tells me that the noun is a kind of <b>tool</b>, <b>food</b>, or <b>trait</b>,-->
+				<!--<br>I have my answer.-->
+				<br>If my search in WordNet tells me that the main noun is a kind of <b>artifact</b>, <b>food</b>, or <b>feeling</b>, I have my answer: the semantic role is <b>instrument</b>, <b>part-of</b>, or <b>manner</b>, respectively.
 				<br><br>If the noun isn't related to any of those things,
 				<br>I assume that the sentence must be talking about Jane's company as she eats.
 			</div>
@@ -376,6 +443,7 @@
 				<br>if I wanted to be able to understand ambiguity in a new sentence!
 				<br><br>Even a smart computer like me has a pretty long way to go
 				<br>before I'm as good at figuring out ambiguity as humans are.
+				<br><br>(Thankfully, researchers are working hard on finding more general strategies for handling ambiguity!)
 			</div>
 
 			<div class="itemx">
@@ -412,6 +480,7 @@
 	<script src="js/highlight.pack.js"></script>
 	<script src="js/screenfull.js"></script>
 	<script src="js/slick.js"></script>
+	<!--<script src="js/gifshot.js"></script>-->
 	<script src="js/canvas.js"></script>
 	<script src="js/main.js"></script>
 	<!--[if (gte IE 6)&(lte IE 8)]>
