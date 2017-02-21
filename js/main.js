@@ -46,6 +46,7 @@ $(document).ready(function() {
 		$('.guess').empty();
 		$('.guess').append(guess);
 
+		//var inputtext = $('.input-widget').children('.input-box').text();
 		var inputtext = $('#txtphrase').val();
 		$('.blank').text(inputtext);
 		$('.blank.capital').text(inputtext.charAt(0).toUpperCase()+inputtext.slice(1));
@@ -82,27 +83,33 @@ function GetRandomElem(l) {
 	return l[ind];
 }
 
+function submitQuery(){
+		var inputtext = $('#txtphrase').val();
+		$('.blank').text(inputtext);
+		$('.blank.capital').text(inputtext.charAt(0).toUpperCase()+inputtext.slice(1));
+		if (inputtext.trim() != '') {
+			socket.emit('RequestParse',[inputtext]);
+			play(); //draw canvas
+			$('.vertical').slick('slickGoTo',3);
+		}
+}
+
 //TODO: get this working on iOS...
 $(document).on(click,'.input-enter',function(event) {
-
-	var inputtext = $('#txtphrase').val();
-	$('.blank').text(inputtext);
-	$('.blank.capital').text(inputtext.charAt(0).toUpperCase()+inputtext.slice(1));
-	if (inputtext.trim() != '') {
-		socket.emit('RequestParse',[inputtext]);
-		play(); //draw canvas
-		$('.vertical').slick('slickGoTo',3);
-	}
+	submitQuery();
 });
 
 $(document).on(click,'.input-clear',function(event) {
+	//$(this).parent().children('.input-box').text('');
 	$('#txtphrase').val('');
 });
 
+//$(document).on('keydown','.input-box',function(event) {
 $(document).on('keydown','#txtphrase',function(event) {
 	if (event.keyCode === 13) {
-		event.preventDefault();
-		$('.input-enter').click();
+		//event.preventDefault();
+		submitQuery();
+		$("#txtphrase").blur();
 	}
 });
 
