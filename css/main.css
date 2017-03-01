@@ -357,6 +357,43 @@ hr { border-width:2px; }
 	content:'(Noun Phrase)';
 }
 
+#txtphrase{
+	border: none;
+	border-bottom:3px solid #EEEEEE;
+}
+
+#txtphrase::-webkit-input-placeholder {
+  	color:rgba(255,0,96,.5);
+	font-style:italic; font-variant:small-caps;
+}
+
+#txtphrase::-moz-placeholder { /* Firefox 19+ */
+  	color:rgba(255,0,96,.5);
+	font-style:italic; font-variant:small-caps;
+}
+
+#txtphrase:-ms-input-placeholder { /* IE 10+ */
+  	color:rgba(255,0,96,.5);
+	font-style:italic; font-variant:small-caps;
+}
+
+#txtphrase:-moz-placeholder { /* Firefox 18- */
+  	color:rgba(255,0,96,.5);
+	font-style:italic; font-variant:small-caps;
+}
+
+
+
+#txtphrase:empty:not(:focus):before {
+	color:rgba(255,0,96,.5);
+	font-style:italic; font-variant:small-caps;
+	content:'(Noun Phrase)';
+}
+
+.input-restyle .ui-input-text{
+	display: inline;
+}
+
 .input-widget .btn {
 	border:3px solid #000000;
 	margin:0!important;
