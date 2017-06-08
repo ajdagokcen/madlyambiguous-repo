@@ -143,18 +143,6 @@ b { font-weight:900; color:#FF0060; }
 
 hr { border-width:2px; }
 
-/*added by kaleb-white*/
-/*
-.outline {
- height: 25px;
- width: 20px;
- border: #999 solid 2px;
- border-radius: 10px;
- margin: 15px;
- box-shadow: 0px 0px 0px 1px #fff inset;
- text-align: center; 
-}
-*/
 /*html {
 	overflow-y: -moz-scrollbars-vertical;
 	overflow-y: scroll;
