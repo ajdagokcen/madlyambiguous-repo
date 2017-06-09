@@ -173,6 +173,15 @@ hr { border-width:2px; }
 	color:#FFFFFF;
 	/*box-sizing:border-box;*/
 }
+
+/* added by kaleb-white */
+
+ .numbers {
+    font-size: 20px
+} 
+
+/* end */
+
 /* fix weird firefox ignoring the bottom padding of max-height+overflow */
 /*.heading:after, .content:after { content:""; height:100px; display:block; }*/
 
