@@ -289,3 +289,29 @@ $('#txtphrase')
     .keyup(resizeInput)
     // resize on page load
     .each(resizeInput);
+
+// added by kaleb-white
+$(document).on(click, '.moneybankopt', function(event) {
+    $('.variable-page').empty();
+    $('.moneybank').addClass('compsel');
+    $('.riverbank').removeClass('compsel');
+    
+    var moneybankopt = "Well, sure, if Jane were in town running errands, it would make sense for her to have a picnic near the place she keeps her money. <br><br>On the other hand, on a nice day it'd be much more pleasant to have a picnic by the river bank. There's even a table there with nice flowers and a kitty!<br><br>";
+    
+    $('.variable-page').append(moneybankopt);
+    $('.basic').slick('slickNext');
+})
+
+$(document).on(click, '.riverbankopt', function(event) {
+    $('.variable-page').empty();
+    $('.riverbank').addClass('compsel');
+    $('.moneybank').removeClass('compsel');
+    
+    var riverbankopt = "Yeah, it’d be much more pleasant to have a picnic by the river bank.  There’s even a table there with flowers and a nice kitty! <br><br>On the other hand, if Jane were in town running errands, it might've made sense for her to have a picnic near the place she keeps her money.<br><br>";
+    
+    $('.variable-page').append(riverbankopt);
+    $('.basic').slick('slickNext');
+})
+
+
+// oh boy

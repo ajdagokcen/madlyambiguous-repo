@@ -48,7 +48,8 @@
 </head>
 
 <body>
-	<div id="page"><div class="vertical slider">
+<!-- 1. carousel page slider 2. up/down slider -->	
+    <div id="page"><div class="vertical slider">
 
 		<div class="heading">
 		<div class="link up untext clicky fullscreen" onclick="ToggleFullScreen();" title="Toggle Fullscreen"><i class="fi-arrows-out"></i></div>
@@ -93,28 +94,36 @@
 				<br><br>which one of these "banks" do you picture?
 				<br><br><br>
 				<div class="caption untext">
-					<div class="img vect" style="background-image:url('../images/photos/money-bank.svg');"></div>
-					<div class="txt">Financial bank?</div>
-				</div>
-				<div class="caption untext">
-					<div class="img" style="background-image:url('../images/photos/river-bank.jpg');"></div>
-					<div class="txt">. . . or river bank?</div>
-				</div>
+					
+                    <div class="img vect change moneybankopt" style="background-image:url('../images/photos/money-bank.svg');"></div>
+					
+                    <div class="txt">Financial bank?</div>
+				
+                </div>
+				
+                <div class="caption untext">
+					
+                    <div class="img change riverbankopt" style="background-image:url('../images/photos/river-bank.jpg');"></div>
+					
+                    <div class="txt">. . . or river bank?</div>
+				
+                </div>
 			</div>
 
 			<div class="itemx">
-				In sentences like this, both meanings of "bank" are plausible.
+                <div class="variable-page"></div>
+                In sentences like this, both meanings of "bank" are plausible.
 				<br>This is called <b>lexical ambiguity</b>.
 				<br><br>Jane might have had a picnic near the place she keeps her money,
 				<br>or she might have had a picnic by a river.
 				<br><br>If you want to know which type of bank it was, you need more information.
-				<br><br><br>
+				<br><br><br><br><br>
 				<div class="caption untext">
-					<div class="img vect" style="background-image:url('../images/photos/money-bank.svg');"></div>
+					<div class="img vect moneybank" style="background-image:url('../images/photos/money-bank.svg');"></div>
 					<div class="txt"></div>
 				</div>
 				<div class="caption untext">
-					<div class="img" style="background-image:url('../images/photos/river-bank.jpg');"></div>
+					<div class="img riverbank" style="background-image:url('../images/photos/river-bank.jpg');"></div>
 					<div class="txt"></div>
 				</div>
 			</div>
@@ -316,7 +325,7 @@
 				<button class="btn input-clear"><i class="fa fa-times"></i></button>
 			</div>.
 			</span>
-			<div class="link down untext clicky" onclick="$('.vertical').slick('slickGoTo',1);"><div>Read instructions again</div></div>
+			<div class="link down untext clicky" onclick="$('.vertical').slick('slickGoTo',1); $('.basic').slick('slickGoTo',0);"><div>Read instructions again</div></div>
 		</div> <!-- content -->
 
 
