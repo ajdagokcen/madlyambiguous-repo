@@ -176,10 +176,18 @@ hr { border-width:2px; }
 
 /* added by kaleb-white */
 
- .numbers {
-    font-size: 20px
+.numbers {
+    font-size: 20px;
 } 
 
+.change:hover {
+    box-shadow: 0px 0px 50px #FF80BF;
+}
+
+.png {
+    height: 182.906px!important;
+    width: 325px!important;
+}
 /* end */
 
 /* fix weird firefox ignoring the bottom padding of max-height+overflow */
@@ -264,9 +272,12 @@ hr { border-width:2px; }
 
 .opt { background:#DDDDDD; display:inline-block; margin:20px; vertical-align:top; }
 .opt:hover { box-shadow:0px 0px 30px #00FF88; background:#BBBBBB; }
-.opt.compsel { box-shadow:0px 0px 30px #0088FF; }
-.opt.compsel:hover { box-shadow:0px 0px 30px #00FFFF; }
-.opt.usersel { box-shadow:0px 0px 30px #FF0060!important; background:#BBBBBB; }
+/*.opt.compsel { box-shadow:0px 0px 30px #0088FF; }
+.opt.compsel:hover { box-shadow:0px 0px 30px #00FFFF; }*/
+.compsel { box-shadow:0px 0px 30px #0088FF; }
+.compsel:hover { box-shadow:0px 0px 30px #00FFFF; }
+/*.opt.usersel { box-shadow:0px 0px 30px #FF0060!important; background:#BBBBBB; }*/
+.usersel { box-shadow:0px 0px 30px #FF0060!important; background:#BBBBBB; }
 
 .img { background-size:cover; background-position:center center; display:inline-block; background-repeat:no-repeat; }
 .img.emote { background-size:contain; }

@@ -289,3 +289,65 @@ $('#txtphrase')
     .keyup(resizeInput)
     // resize on page load
     .each(resizeInput);
+
+// added by kaleb-white
+$(document).on(click, '.meatballFoodOpt', function(event){
+    $('.variablePageTwo').empty();
+    
+    var meatballFoodOpt = "Uh huh! Even us computers like to eat meatballs with our spaghetti. <br><br><br><div class=\"caption untext\"><div class=\"img vect compsel png\" style=\"background-image:url('../images/photos/meatball-food.png');\"></div></div><div class=\"caption untext\"><div class=\"img vect png\" style=\"background-image:url('../images/photos/meatball-utensil.png');\"></div></div>"
+    
+    $('.variablePageTwo').append(meatballFoodOpt);
+    $('.basic').slick('slickNext');
+})
+
+$(document).on(click, '.meatballUtensilOpt', function(event){
+    $('.variablePageTwo').empty();
+    
+    var meatballUtensilOpt = "I don't know about that. Meatballs in the spaghetti seems much more delicious to me.<br><br><br><div class=\"caption untext\"><div class=\"img vect compsel png\" style=\"background-image:url('../images/photos/meatball-food.png');\"></div></div><div class=\"caption untext\"><div class=\"img vect png\" style=\"background-image:url('../images/photos/meatball-utensil.png');\"></div></div>"
+    
+    $('.variablePageTwo').append(meatballUtensilOpt);
+    $('.basic').slick('slickNext');
+})
+
+$(document).on(click, '.forkUtensilOpt', function(event){
+    $('.variablePageOne').empty();
+    
+    var forkUtensilOpt = "Yep! Jane would be <u>using the fork</u> to eat the spaghetti. <br><br><br><div class=\"caption untext\"><div class=\"img vect compsel png\" style=\"background-image:url('../images/photos/fork-utensil.png');\"></div></div><div class=\"caption untext\"><div class=\"img vect png\" style=\"background-image:url('../images/photos/fork-food.png');\"></div></div>"
+    
+    $('.variablePageOne').append(forkUtensilOpt);
+    $('.basic').slick('slickNext');
+})
+
+$(document).on(click, '.forkFoodOpt', function(event){
+    $('.variablePageOne').empty();
+    
+    var forkFoodOpt = "Maybe Jane does like to <u>eat forks with her spaghetti</u>, but as a human you know that probably isn't true. <br><br><br><div class=\"caption untext\"><div class=\"img vect png\" style=\"background-image:url('../images/photos/fork-utensil.png');\"></div></div><div class=\"caption untext\"><div class=\"img vect compsel png\" style=\"background-image:url('../images/photos/fork-food.png');\"></div></div>"
+    
+    $('.variablePageOne').append(forkFoodOpt);
+    $('.basic').slick('slickNext');
+})
+
+$(document).on(click, '.moneybankopt', function(event) {
+    $('.variable-page').empty();
+    $('.moneybank').addClass('compsel');
+    $('.riverbank').removeClass('compsel');
+    
+    var moneybankopt = "Well, sure, if Jane were in town running errands, it would make sense for her to have a picnic near the place she keeps her money. <br><br>On the other hand, on a nice day it'd be much more pleasant to have a picnic by the river bank. There's even a table there with nice flowers and a kitty!<br><br>";
+    
+    $('.variable-page').append(moneybankopt);
+    $('.basic').slick('slickNext');
+})
+
+$(document).on(click, '.riverbankopt', function(event) {
+    $('.variable-page').empty();
+    $('.riverbank').addClass('compsel');
+    $('.moneybank').removeClass('compsel');
+    
+    var riverbankopt = "Yeah, it’d be much more pleasant to have a picnic by the river bank.  There’s even a table there with flowers and a nice kitty! <br><br>On the other hand, if Jane were in town running errands, it might've made sense for her to have a picnic near the place she keeps her money.<br><br>";
+    
+    $('.variable-page').append(riverbankopt);
+    $('.basic').slick('slickNext');
+})
+
+
+// oh boy
