@@ -192,6 +192,11 @@ hr { border-width:2px; }
 /*************************
 **********Content*********
 **************************/
+/*added by kaleb-white*/
+.png {
+    height: 182.906px!important;
+    width: 325px!important;
+}
 
 #page {
 	background:#444444;
