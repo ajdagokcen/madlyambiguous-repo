@@ -294,7 +294,7 @@ $('#txtphrase')
 $(document).on(click, '.meatballFoodOpt', function(event){
     $('.variablePageTwo').empty();
     
-    var meatballFoodOpt = "Yep! Even us computers like to <u>eat meatballs with our spaghetti</u>. <br><br><br><div class=\"caption untext\"><div class=\"img vect compsel png\" style=\"background-image:url('../images/photos/meatball-food.png');\"></div></div><div class=\"caption untext\"><div class=\"img vect png\" style=\"background-image:url('../images/photos/meatball-utensil.png');\"></div></div>"
+    var meatballFoodOpt = "Yep! Even us computers like to <u>eat meatballs with our spaghetti</u>. <br><br><br><div class=\"caption untext\"><div class=\"img vect compsel png\" style=\"background-image:url('../images/photos/meatball-food.png');\"></div><div class=\"txt\">Nice and tasty!</div></div><div class=\"caption untext\"><div class=\"img vect png\" style=\"background-image:url('../images/photos/meatball-utensil.png');\"></div><div class=\"txt\">What a mess!</div></div>"
     
     $('.variablePageTwo').append(meatballFoodOpt);
     $('.basic').slick('slickNext');
@@ -303,7 +303,7 @@ $(document).on(click, '.meatballFoodOpt', function(event){
 $(document).on(click, '.meatballUtensilOpt', function(event){
     $('.variablePageTwo').empty();
     
-    var meatballUtensilOpt = "Hmm, I don't know about that.<br><u>Meatballs in the spaghetti</u> seems much more delicious to me!<br><br><br><div class=\"caption untext\"><div class=\"img vect compsel png\" style=\"background-image:url('../images/photos/meatball-food.png');\"></div></div><div class=\"caption untext\"><div class=\"img vect png\" style=\"background-image:url('../images/photos/meatball-utensil.png');\"></div></div>"
+    var meatballUtensilOpt = "Hmm, I don't know about that.<br><u>Meatballs in the spaghetti</u> seems much more delicious to me!<br><br><br><div class=\"caption untext\"><div class=\"img vect png\" style=\"background-image:url('../images/photos/meatball-food.png');\"></div><div class=\"txt\">Nice and tasty!</div></div><div class=\"caption untext\"><div class=\"img vect png compsel\" style=\"background-image:url('../images/photos/meatball-utensil.png');\"></div><div class=\"txt\">What a mess!</div></div>"
     
     $('.variablePageTwo').append(meatballUtensilOpt);
     $('.basic').slick('slickNext');
@@ -312,7 +312,7 @@ $(document).on(click, '.meatballUtensilOpt', function(event){
 $(document).on(click, '.forkUtensilOpt', function(event){
     $('.variablePageOne').empty();
     
-    var forkUtensilOpt = "Right! Jane would most likely be <u>using the fork</u> to eat the spaghetti. <br><br><br><div class=\"caption untext\"><div class=\"img vect compsel png\" style=\"background-image:url('../images/photos/fork-utensil.png');\"></div></div><div class=\"caption untext\"><div class=\"img vect png\" style=\"background-image:url('../images/photos/fork-food.png');\"></div></div>"
+    var forkUtensilOpt = "Right! Jane would most likely be <u>using the fork</u> to eat the spaghetti. <br><br><br><div class=\"caption untext\"><div class=\"img vect compsel png\" style=\"background-image:url('../images/photos/fork-utensil.png');\"></div><div class=\"txt\">That's the way!</div></div><div class=\"caption untext\"><div class=\"img vect png\" style=\"background-image:url('../images/photos/fork-food.png');\"></div><div class=\"txt\">Ouch &#8212; that's a little TOO al dente!</div></div>"
     
     $('.variablePageOne').append(forkUtensilOpt);
     $('.basic').slick('slickNext');
@@ -321,7 +321,7 @@ $(document).on(click, '.forkUtensilOpt', function(event){
 $(document).on(click, '.forkFoodOpt', function(event){
     $('.variablePageOne').empty();
     
-    var forkFoodOpt = "Aw c'mon!<br>Maybe Jane does like to <u>eat forks with her spaghetti</u>, but as a human you know that probably isn't true. <br><br><br><div class=\"caption untext\"><div class=\"img vect png\" style=\"background-image:url('../images/photos/fork-utensil.png');\"></div></div><div class=\"caption untext\"><div class=\"img vect compsel png\" style=\"background-image:url('../images/photos/fork-food.png');\"></div></div>"
+    var forkFoodOpt = "Aw c'mon!<br>Maybe Jane does like to <u>eat forks with her spaghetti</u>, but as a human you know that probably isn't true. <br><br><br><div class=\"caption untext\"><div class=\"img vect png\" style=\"background-image:url('../images/photos/fork-utensil.png');\"></div><div class=\"txt\">That's the way!</div></div><div class=\"caption untext\"><div class=\"img vect compsel png\" style=\"background-image:url('../images/photos/fork-food.png');\"></div><div class=\"txt\">Ouch &#8212; that's a little TOO al dente!</div></div>"
     
     $('.variablePageOne').append(forkFoodOpt);
     $('.basic').slick('slickNext');
