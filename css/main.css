@@ -189,15 +189,6 @@ hr { border-width:2px; }
     width: 400px!important;
 }
 
-.btnclickyy, .btnclickyn{
-    border-radius: 25px;
-    width: 150px;
-    height: 100px;
-    background: #DDDDDD;
-    line-height: 100px;
-    margin: auto;
-}
-
 .btnclickyy {
     margin-left: 35%;
 }
@@ -206,15 +197,6 @@ hr { border-width:2px; }
     margin-right: 35%;
 }
 
-.btnclickyy:hover, .btnclickyn:hover {
-    background: #AAAAAA; 
-}
-
-#centered {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
-}
 /* end */
 
 /* fix weird firefox ignoring the bottom padding of max-height+overflow */

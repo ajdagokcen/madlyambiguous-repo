@@ -349,5 +349,23 @@ $(document).on(click, '.riverbankopt', function(event) {
     $('.basic').slick('slickNext');
 })
 
+$(document).on(click, '.btnclickyy', function(event) {
+    $('.ynchange').empty();
+    
+    var ynopt = "Right, it's true!";
+    
+    $('.ynchange').append(ynopt);
+    $('.basic').slick('slickNext');
+})
+
+$(document).on(click, '.btnclickyn', function(event) {
+    $('.ynchange').empty();
+    
+    var ynopt = "Well, it's true!";
+    
+    $('.ynchange').append(ynopt);
+    $('.basic').slick('slickNext');
+})
+
 
 // oh boy
