@@ -291,6 +291,26 @@ $('#txtphrase')
     .each(resizeInput);
 
 // added by kaleb-white
+$(document).on(click, '.maryFriendOpt', function(event){
+    $('.variablePageThree').empty();
+    
+    var maryFriendOpt = "Don't we wish we all had friends like Mary, content to just sit there and watch us eat our pasta!<br><br>"
+    
+    $('.variablePageThree').append(maryFriendOpt);
+    $('.maryOne').addClass('.compsel');
+    $('.basic').slick('slickNext');
+})
+
+$(document).on(click, '.maryFoodOpt', function(event){
+    $('.variablePageThree').empty();
+    
+    var maryFoodOpt = "Ew, Nasty!<br><br>"
+    
+    $('.variablePageThree').append(maryFoodOpt);
+    $('.maryTwo').addClass('.compsel');
+    $('.basic').slick('slickNext');
+})
+
 $(document).on(click, '.meatballFoodOpt', function(event){
     $('.variablePageTwo').empty();
     
