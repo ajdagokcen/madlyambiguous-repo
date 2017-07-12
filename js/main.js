@@ -291,10 +291,34 @@ $('#txtphrase')
     .each(resizeInput);
 
 // added by kaleb-white
+$(document).on(click, '.maryFriendOpt', function(event){
+    $('.variablePageThree').empty();
+    
+    var maryFriendOpt = "Right, you know";
+    
+    $('.variablePageThree').append(maryFriendOpt);
+    $('.maryOne').addClass('compsel');
+    $('.maryTwo').removeClass('compsel');
+    $('.basic').slick('slickNext');
+})
+
+$(document).on(click, '.maryFoodOpt', function(event){
+    $('.variablePageThree').empty();
+    
+    var maryFoodOpt = "Ew! You're just being silly. I think you know";
+    
+    $('.variablePageThree').append(maryFoodOpt);
+    $('.maryTwo').addClass('compsel');
+    $('.maryOne').removeClass('compsel');
+    $('.basic').slick('slickNext');
+})
+
 $(document).on(click, '.meatballFoodOpt', function(event){
     $('.variablePageTwo').empty();
+    $('.meatballFood').addClass('compsel');
+    $('.meatballUtensil').removeClass('compsel');
     
-    var meatballFoodOpt = "Uh huh! Even us computers like to eat meatballs with our spaghetti. <br><br><br><div class=\"caption untext\"><div class=\"img vect compsel png\" style=\"background-image:url('../images/photos/meatball-food.png');\"></div></div><div class=\"caption untext\"><div class=\"img vect png\" style=\"background-image:url('../images/photos/meatball-utensil.png');\"></div></div>"
+    var meatballFoodOpt = "Yep! Even us computers like to <u>eat meatballs with our spaghetti</u>.";
     
     $('.variablePageTwo').append(meatballFoodOpt);
     $('.basic').slick('slickNext');
@@ -302,8 +326,10 @@ $(document).on(click, '.meatballFoodOpt', function(event){
 
 $(document).on(click, '.meatballUtensilOpt', function(event){
     $('.variablePageTwo').empty();
+    $('.meatballUtensil').addClass('compsel');
+    $('.meatballFood').removeClass('compsel');
     
-    var meatballUtensilOpt = "I don't know about that. Meatballs in the spaghetti seems much more delicious to me.<br><br><br><div class=\"caption untext\"><div class=\"img vect compsel png\" style=\"background-image:url('../images/photos/meatball-food.png');\"></div></div><div class=\"caption untext\"><div class=\"img vect png\" style=\"background-image:url('../images/photos/meatball-utensil.png');\"></div></div>"
+    var meatballUtensilOpt = "Hmm, I don't know about that.<br><u>Meatballs in the spaghetti</u> seems much more delicious to me!";
     
     $('.variablePageTwo').append(meatballUtensilOpt);
     $('.basic').slick('slickNext');
@@ -311,8 +337,10 @@ $(document).on(click, '.meatballUtensilOpt', function(event){
 
 $(document).on(click, '.forkUtensilOpt', function(event){
     $('.variablePageOne').empty();
+    $('.forkUtensil').addClass('compsel');
+    $('.forkFood').removeClass('compsel');
     
-    var forkUtensilOpt = "Yep! Jane would be <u>using the fork</u> to eat the spaghetti. <br><br><br><div class=\"caption untext\"><div class=\"img vect compsel png\" style=\"background-image:url('../images/photos/fork-utensil.png');\"></div></div><div class=\"caption untext\"><div class=\"img vect png\" style=\"background-image:url('../images/photos/fork-food.png');\"></div></div>"
+    var forkUtensilOpt = "Right! Jane would most likely be <u>using the fork</u> to eat the spaghetti.";
     
     $('.variablePageOne').append(forkUtensilOpt);
     $('.basic').slick('slickNext');
@@ -320,8 +348,10 @@ $(document).on(click, '.forkUtensilOpt', function(event){
 
 $(document).on(click, '.forkFoodOpt', function(event){
     $('.variablePageOne').empty();
+    $('.forkFood').addClass('compsel');
+    $('.forkUtensil').removeClass('compsel');
     
-    var forkFoodOpt = "Maybe Jane does like to <u>eat forks with her spaghetti</u>, but as a human you know that probably isn't true. <br><br><br><div class=\"caption untext\"><div class=\"img vect png\" style=\"background-image:url('../images/photos/fork-utensil.png');\"></div></div><div class=\"caption untext\"><div class=\"img vect compsel png\" style=\"background-image:url('../images/photos/fork-food.png');\"></div></div>"
+    var forkFoodOpt = "Aw c'mon!<br>Maybe Jane does like to <u>eat forks with her spaghetti</u>, <br>but as a human you know that probably isn't true.";
     
     $('.variablePageOne').append(forkFoodOpt);
     $('.basic').slick('slickNext');
@@ -332,7 +362,7 @@ $(document).on(click, '.moneybankopt', function(event) {
     $('.moneybank').addClass('compsel');
     $('.riverbank').removeClass('compsel');
     
-    var moneybankopt = "Well, sure, if Jane were in town running errands, it would make sense for her to have a picnic near the place she keeps her money. <br><br>On the other hand, on a nice day it'd be much more pleasant to have a picnic by the river bank. There's even a table there with nice flowers and a kitty!<br><br>";
+    var moneybankopt = "Well, sure, if Jane were in town running errands, it would make sense for her to have a picnic near the place she keeps her money. <br><br>On the other hand, on a nice day it'd be much more pleasant to have a picnic by the river bank. <br>There's even a table there with nice flowers and a kitty!<br><br>";
     
     $('.variable-page').append(moneybankopt);
     $('.basic').slick('slickNext');
@@ -343,9 +373,27 @@ $(document).on(click, '.riverbankopt', function(event) {
     $('.riverbank').addClass('compsel');
     $('.moneybank').removeClass('compsel');
     
-    var riverbankopt = "Yeah, it’d be much more pleasant to have a picnic by the river bank.  There’s even a table there with flowers and a nice kitty! <br><br>On the other hand, if Jane were in town running errands, it might've made sense for her to have a picnic near the place she keeps her money.<br><br>";
+    var riverbankopt = "Yeah, it’d be much more pleasant to have a picnic by the river bank.  There’s even a table there with flowers and a nice kitty! <br><br>On the other hand, if Jane were in town running errands, <br>it might've made sense for her to have a picnic near the place she keeps her money.<br><br>";
     
     $('.variable-page').append(riverbankopt);
+    $('.basic').slick('slickNext');
+})
+
+$(document).on(click, '.btnclickyy', function(event) {
+    $('.ynchange').empty();
+    
+    var ynopt = "Right, it's true!";
+    
+    $('.ynchange').append(ynopt);
+    $('.basic').slick('slickNext');
+})
+
+$(document).on(click, '.btnclickyn', function(event) {
+    $('.ynchange').empty();
+    
+    var ynopt = "Well, it's true!";
+    
+    $('.ynchange').append(ynopt);
     $('.basic').slick('slickNext');
 })
 

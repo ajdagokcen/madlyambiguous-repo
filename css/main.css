@@ -176,13 +176,27 @@ hr { border-width:2px; }
 
 /* added by kaleb-white */
 
- .numbers {
+.numbers {
     font-size: 20px;
 } 
 
- .change:hover {
+.change:hover {
     box-shadow: 0px 0px 50px #FF80BF;
 }
+
+.png {
+    height: 225px!important;
+    width: 400px!important;
+}
+
+.btnclickyy {
+    margin-left: 35%;
+}
+
+.btnclickyn {
+    margin-right: 35%;
+}
+
 
 /* end */
 
@@ -192,11 +206,6 @@ hr { border-width:2px; }
 /*************************
 **********Content*********
 **************************/
-/*added by kaleb-white*/
-.png {
-    height: 182.906px!important;
-    width: 325px!important;
-}
 
 #page {
 	background:#444444;
