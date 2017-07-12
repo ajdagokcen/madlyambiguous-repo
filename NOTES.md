@@ -1,5 +1,13 @@
 # Madly Ambiguous: Notes and Ongoing Issues
 
+
+### Advanced Mode
+
+Advanced mode will require python 2.7 and the gensim package in order to use word2vec embeddings.
+
+The README will need to be updated with revised instructions for installing and running the system.
+
+
 ### The iOS Issue
 
 There is a major issue with JavaScript/jQuery event binding when accessing Madly Ambiguous from an iOS operating system.  Desktop Mac OS does not seem to have the issue.
