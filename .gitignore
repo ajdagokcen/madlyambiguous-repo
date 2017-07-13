@@ -1,1 +1,5 @@
 data/results.tsv
+data/*gensim*
+.PID
+nohup.out
+python/nohup.out
