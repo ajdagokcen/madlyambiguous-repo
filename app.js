@@ -185,7 +185,7 @@ io.on('connection', function (socket) {
 	socket.on('RequestParse', function(data) {
 		var uname = socketsOfClients[socket.id];
 		if (data.length > 0 && data[0] !== undefined && data[0] != '') {
-
+            console.log("Advanced mode is " + data[1]);
 			var words = new pos.Lexer().lex(data[0].toLowerCase());
 			var tagger = new pos.Tagger();
 			var taggedWords = tagger.tag(words);
