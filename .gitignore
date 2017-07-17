@@ -3,3 +3,5 @@ data/*gensim*
 .PID
 nohup.out
 python/nohup.out
+.DS_Store
+images/.DS_Store

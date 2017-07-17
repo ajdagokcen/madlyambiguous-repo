@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cd python
-nohup python -u embcat_server.py &
+nohup python -u embcat_server.py --small &
+#nohup python -u embcat_server.py &
 cd ..
 

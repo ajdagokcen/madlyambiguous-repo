@@ -1,3 +1,4 @@
+import argparse
 import rpyc
 from rpyc.utils.server import ThreadedServer
 import csv
@@ -6,20 +7,21 @@ from gensim.models import Word2Vec
 import numpy as np
 from numpy import linalg
 
-verbose = False
-port = 18861
+parser = argparse.ArgumentParser(description='server for using embeddings to classify phrases as utensil, food, manner or company')
+parser.add_argument('-p', '--port', type=int, default=18861, help='port the server is running on')
+parser.add_argument('-v', '--verbose', action='store_true', help='log steps to stderr (normally anything on stderr will signal an error)')
+parser.add_argument('-s', '--small', action='store_true', help='use small-sized embeddings file')
+parser.add_argument('-t', '--train', help='file to use for training phrases')
+parser.add_argument('-o', '--test', help='file to use for test phrases')
 
-#w2v_dir = '/Users/mwhite/dev/data/word2vec/'
-#w2v_dir = '/scratch/data/word2vec/'
+args = parser.parse_args()
+
 w2v_dir = '../data/'
-#data_dir = '/Users/mwhite/dev/data/madlyambiguous/'
-#data_dir = './'
 data_dir = '../data/'
-embeddings_fn = w2v_dir + 'gn.w2v.gensim.100k'
-#embeddings_fn = w2v_dir + 'gensim.gn.w2v'
-train_fn = data_dir + 'train.tsv'
-test_fn = data_dir + 'test.tsv'
-
+embeddings_fn = w2v_dir + ('gn.w2v.gensim.100k' if args.small else 'gensim.gn.w2v')
+train_fn = (data_dir + 'train.tsv') if args.train is None else args.train
+test_fn = (data_dir + 'test.tsv') if args.test is None else args.test
+    
 def cossim(v1,v2):
     return np.dot(v1,v2) / (linalg.norm(v1) * linalg.norm(v2))
 
@@ -87,7 +89,7 @@ def choose_cat(vec):
 
 print
 print 'trying test phrases in:', test_fn
-if verbose: print
+if args.verbose: print
 
 total, correct, wn_correct, no_emb = 0, 0, 0, 0
 
@@ -100,16 +102,16 @@ with open(test_fn) as tsvfile:
         if cat == row[1]: wn_correct += 1
         vec = avg_vec_phr(phrase)
         if vec is None:
-            if verbose: print 'no embedding for:', phrase
+            if args.verbose: print 'no embedding for:', phrase
             no_emb += 1
         pred_cat = choose_cat(vec)
         if cat == pred_cat:
             correct += 1
-        elif verbose:
+        elif args.verbose:
             print 'mistook:', phrase
             print 'as:', pred_cat, 'instead of:', cat
 
-if verbose: print
+if args.verbose: print
 print 'accuracy:', (1.0 * correct / total)
 print 'out of:', total
 print 'with:', no_emb, 'no embedding cases'
@@ -120,28 +122,28 @@ class MyService(rpyc.Service):
     def on_connect(self):
         # code that runs when a connection is created
         # (to init the serivce, if needed)
-        if verbose: print 'received connection!'
+        if args.verbose: print 'received connection!'
         pass
 
     def on_disconnect(self):
         # code that runs when the connection has already closed
         # (to finalize the service, if needed)
-        if verbose: print 'disconnected!'
+        if args.verbose: print 'disconnected!'
         pass
 
     def exposed_categorize_phrase(self, phrase):
         # this is an exposed method
-        if verbose: print 'received phrase:', phrase
+        if args.verbose: print 'received phrase:', phrase
         vec = avg_vec_phr(phrase)
         if vec is None:
-            if verbose: print 'no embedding for:', phrase
+            if args.verbose: print 'no embedding for:', phrase
         pred_cat = choose_cat(vec)
-        if verbose: print 'categorized as: ', pred_cat
+        if args.verbose: print 'categorized as: ', pred_cat
         return pred_cat
 
 print
-print 'starting server on port', port
-t = ThreadedServer(MyService, port = port)
+print 'starting server on port', args.port
+t = ThreadedServer(MyService, port = args.port)
 print
 t.start()
 

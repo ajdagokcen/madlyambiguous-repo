@@ -1,17 +1,19 @@
+import argparse
 import sys
 import rpyc
 
-verbose = False
-port = 18861
+parser = argparse.ArgumentParser(description='client for connecting to embeddings-based categorization server')
+parser.add_argument('phrase', help='phrase to ask the server to categorize')
+parser.add_argument('-p', '--port', type=int, default=18861, help='port the server is running on')
+parser.add_argument('-v', '--verbose', action='store_true', help='log steps to stderr (normally anything on stderr will signal an error)')
+args = parser.parse_args()
 
-phrase = sys.argv[1]
+if args.verbose: print >> sys.stderr, 'connecting to server'
+c = rpyc.connect("localhost", args.port)
 
-if verbose: print >> sys.stderr, 'connecting to server'
-c = rpyc.connect("localhost", port)
+if args.verbose: print >> sys.stderr, 'categorizing phrase:', args.phrase
+cat = c.root.categorize_phrase(args.phrase)
 
-if verbose: print >> sys.stderr, 'categorizing phrase:', phrase
-cat = c.root.categorize_phrase(phrase)
-
-if verbose: print >> sys.stderr, 'category:', cat
+if args.verbose: print >> sys.stderr, 'category:', cat
 
 print cat
