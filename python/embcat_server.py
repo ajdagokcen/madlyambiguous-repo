@@ -7,6 +7,7 @@ from gensim.models import Word2Vec
 import numpy as np
 from numpy import linalg
 from nltk.tokenize import TreebankWordTokenizer
+from math import log
 
 parser = argparse.ArgumentParser(description='server for using embeddings to classify phrases as utensil, food, manner or company')
 parser.add_argument('-p', '--port', type=int, default=18861, help='port the server is running on')
@@ -39,6 +40,14 @@ def avg(vecs):
         retval = np.add(retval, vec)
     retval = np.divide(retval, len(vecs))
     return retval
+
+def weighted_avg(vecs, weights):
+    if len(vecs) == 1: return vecs[0]
+    retval = vecs[0] * weights[0]
+    for (vec,weight) in zip(vecs[1:],weights[1:]):
+        retval = np.add(retval, vec * weight)
+    retval = np.divide(retval, len(vecs))
+    return retval
     
 print 'loading word2vec embeddings from', embeddings_fn
 model = Word2Vec.load(embeddings_fn)
@@ -48,13 +57,26 @@ model = Word2Vec.load(embeddings_fn)
 #print 'normalizing embeddings'
 #model.init_sims(replace=True)
 
-del model.syn0  # not needed => free up mem
-
 # nb: can use model.index2word to get freq-sorted words
 
+def inv_rank(word):
+    return 1.0 / model.vocab[word].index
+
+# info weighting:
+# prob word ~= (1/index[word]) * k / n, by Zipf's Law
+# sum prob word = k/n * sum_j (1/index[word_j])
+# rel prob word = (1/index[word]) / sum_j(1/index[word_j])
+# info word = - log rel prob word
+# weight word = info word / sum_j info word_j
 def avg_vec(words):
     vecs = [model[word] for word in words]
-    return avg(vecs)
+    if len(words) == 1: return avg(vecs)
+    sum_inv_rank = sum(inv_rank(word) for word in words)
+    rel_probs = [inv_rank(word) / sum_inv_rank for word in words]
+    infos = [-1 * log(rel_prob, 2) for rel_prob in rel_probs]
+    sum_infos = sum(infos)
+    weights = [info / sum_infos for info in infos]
+    return weighted_avg(vecs, weights)
 
 # TODO: check for multiword phrases
 def avg_vec_phr(phrase):
