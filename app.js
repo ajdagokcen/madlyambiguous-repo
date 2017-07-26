@@ -15,6 +15,9 @@ var pos = require('pos');
 var natural = require('natural');
 var lemmer = require('lemmer');
 
+// for python client
+var PythonShell = require('python-shell');
+
 /***** WORDNET *****/
 
 var wn = require('./data/wn-entries.json')
@@ -183,61 +186,83 @@ io.on('connection', function (socket) {
 	console.log("Connection from: " + address.address); // + ":" + address.port);
 
 	socket.on('RequestParse', function(data) {
-		var uname = socketsOfClients[socket.id];
-		if (data.length > 0 && data[0] !== undefined && data[0] != '') {
+	    var uname = socketsOfClients[socket.id];
+	    if (data.length > 0 && data[0] !== undefined && data[0] != '') {
 
-			var words = new pos.Lexer().lex(data[0].toLowerCase());
-			var tagger = new pos.Tagger();
-			var taggedWords = tagger.tag(words);
-			/*for (i in taggedWords) {
-				var taggedWord = taggedWords[i];
-				var word = taggedWord[0];
-				var tag = taggedWord[1];
-				console.log(word + " /" + tag);
-			}*/
-			// get first and last (exclusive) indices of main phrase
-			// first group of Js and Ns
-			// if phrase ends with IN or contains VBG, go for NONE OF THE ABOVE???
-			var known = true;
-			for (i in taggedWords)
-				if (taggedWords[i][1] == 'VBG' || (i == taggedWords.length-1 && taggedWords[i][1] == 'IN'))
-					known = false;
-
-			if (known) {
-				var mn = GetMainN(words, taggedWords);
-				var ln = [];
-				lemmer.lemmatize(mn, function(err,lems) {
-					ln = lems;
-
-					//mn.forEach(function(x,i) { ln.push(natural.PorterStemmer.stem(x)); });
-					//mn.forEach(function(x,i) { ln.push(natural.LancasterStemmer.stem(x)); });
-
-					// variants: 1. as-is + lem(as-is); 2. all but the last noun; 3. all indiv words, left to right
-					var variants = [mn.join(' '), ln.join(' ')];
-					if (mn.length > 1) variants = variants.concat([mn.slice(0,mn.length-1).join(' '), ln.slice(0,ln.length-1).join(' ')]);
-					variants = variants.concat(mn).concat(ln);
-					//console.log(variants)
-
-					var found = false;
-					for (var i=0; i<variants.length; i++) {
-						if (wn.food.indexOf(variants[i]) >= 0) {
-							socket.emit('ReturnWN','food');
-							found = true;
-						} else if (wn.utensil.indexOf(variants[i]) >= 0) {
-							socket.emit('ReturnWN','utensil');
-							found = true;
-						} else if (wn.manner.indexOf(variants[i]) >= 0) {
-							socket.emit('ReturnWN','manner');
-							found = true;
-						}
-						if (found) break;
-					}
-					if (!found) socket.emit('ReturnWN','company');
-				});
-
-			} else socket.emit('ReturnWN','company');
-			//} else socket.emit('ReturnWN','none');
+		if (data[1] == 1) { // advanced mode
+                    var options = {
+			args: [data[0]]
+                    };
+                
+                    PythonShell.run('python/embcat_client.py', options, function (err, results) {
+			if (err) { 
+                            console.log('python client error: ' + err);
+                            socket.emit('ReturnGuess', 'none');
+			}
+			else {
+                            // results is an array consisting of messages collected during execution 
+                            //console.log('python client results: %j', results);
+                            var response = results[0];
+                            socket.emit('ReturnGuess', response);
+			}
+                    });
 		}
+
+		else { // basic mode
+
+                    var words = new pos.Lexer().lex(data[0].toLowerCase());
+                    var tagger = new pos.Tagger();
+                    var taggedWords = tagger.tag(words);
+                    /*for (i in taggedWords) {
+                      var taggedWord = taggedWords[i];
+                      var word = taggedWord[0];
+                      var tag = taggedWord[1];
+                      console.log(word + " /" + tag);
+                      }*/
+                    // get first and last (exclusive) indices of main phrase
+                    // first group of Js and Ns
+                    // if phrase ends with IN or contains VBG, go for NONE OF THE ABOVE???
+                    var known = true;
+                    for (i in taggedWords)
+			if (taggedWords[i][1] == 'VBG' || (i == taggedWords.length-1 && taggedWords[i][1] == 'IN'))
+                            known = false;
+
+                    if (known) {
+			var mn = GetMainN(words, taggedWords);
+			var ln = [];
+			lemmer.lemmatize(mn, function(err,lems) {
+                            ln = lems;
+
+                            //mn.forEach(function(x,i) { ln.push(natural.PorterStemmer.stem(x)); });
+                            //mn.forEach(function(x,i) { ln.push(natural.LancasterStemmer.stem(x)); });
+
+                            // variants: 1. as-is + lem(as-is); 2. all but the last noun; 3. all indiv words, left to right
+                            var variants = [mn.join(' '), ln.join(' ')];
+                            if (mn.length > 1) variants = variants.concat([mn.slice(0,mn.length-1).join(' '), ln.slice(0,ln.length-1).join(' ')]);
+                            variants = variants.concat(mn).concat(ln);
+                            //console.log('variants: ' + variants)
+
+                            var found = false;
+                            for (var i=0; i<variants.length; i++) {
+				if (wn.food.indexOf(variants[i]) >= 0) {
+                                    socket.emit('ReturnGuess','food');
+                                    found = true;
+				} else if (wn.utensil.indexOf(variants[i]) >= 0) {
+                                    socket.emit('ReturnGuess','utensil');
+                                    found = true;
+				} else if (wn.manner.indexOf(variants[i]) >= 0) {
+                                    socket.emit('ReturnGuess','manner');
+                                    found = true;
+				}
+				if (found) break;
+                            }
+                            if (!found) socket.emit('ReturnGuess','company');
+			});
+
+                    } else socket.emit('ReturnGuess','company');
+                    //} else socket.emit('ReturnGuess','none');
+		}
+            }
 	});
 
 	socket.on('SaveResults', function(data) {

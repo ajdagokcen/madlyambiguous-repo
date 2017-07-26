@@ -197,6 +197,14 @@ hr { border-width:2px; }
     margin-right: 35%;
 }
 
+.tellMode {
+    padding: 3px 15px 3px 15px;
+    background-color: rgba(0, 0, 0, .2);
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    font-size: 12px;
+}
 
 /* end */
 

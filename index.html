@@ -385,8 +385,9 @@
 		</div> <!-- content/slider -->
 
 		<div class="content">
+		        <div class="tellMode">Basic Mode</div>
 			Complete the following sentence <br>with a <b>Noun Phrase</b>
-		    <br>like “<u>meatballs</u>” or “<u>a silver fork</u>” or “<u>my friend Joe</u>”.
+		        <br>like “<u>meatballs</u>” or “<u>a silver fork</u>” or “<u>my friend Joe</u>”.
 			<br><br><br><br>
 			<span class="ex" id="sent">Jane ate spaghetti with 
 			<div class="input-widget input-restyle">
@@ -400,6 +401,7 @@
 
 
 		<div class="content">
+		        <div class="tellMode">Basic Mode</div>
 			<canvas id="canvas" width="0" height="0"></canvas>
 			I think that
 			<br><br>
@@ -449,7 +451,10 @@
 
 		<div class="content">
 			<span class="stats"></span>
-			<br><br><button class="big btn" onclick="$('.vertical').slick('slickGoTo',2);">Play again?</button>
+			<br><br><button class="big btn playAgain" onclick="$('.vertical').slick('slickGoTo',2);">Play again?</button>
+			<div class='buttonRemove'>
+			  <button class="btn advancedMode" onclick="$('.vertical').slick('slickGoTo', 2);">Switch to Advanced Mode</button>
+			</div>
 			<br><button class="btn" onclick="$('.vertical').slick('slickGoTo',5);">Find out how it's done</button>
 			<br><button class="btn" onclick="$('.vertical').slick('slickGoTo',6);">Quit</button>
 		</div> <!-- content -->
@@ -491,10 +496,6 @@
 			<div class="itemx">
 				<div class="img emote" style="background-image:url('../images/photos/mrcomputerhead-grinning2.svg');"></div>
 				<br><br>Once I pick out the most important noun,
-				<!-- <br>I look up the word in <b>WordNet</b>,
-	    			adding wordnet hyperline 
-				11/16 update - It is a hyperlink, but something isn't making it active/responsive 
-				TODO hyperlink, or just bold? Or nothing? -->
 				<br>I look up the word in <b><a href="https://wordnet.princeton.edu/">WordNet</a></b>,
 				<br>which is like a very detailed thesaurus.
 			</div>
@@ -542,7 +543,7 @@
 				<br><br>Maybe now that you know my secrets,
 				<br>you have some new ideas on how to stump me.
 				<br><br>Do you want to play another round?
-				<br><br><button class="big btn" onclick="$('.vertical').slick('slickGoTo',2);">Play again?</button>
+				<br><br><button class="big btn playAgain" onclick="$('.vertical').slick('slickGoTo',2);">Play again?</button>
 				<br><button class="btn" onclick="$('.basic').slick('slickGoTo',0);">Read explanation again</button>
 				<br><button class="btn" onclick="$('.vertical').slick('slickGoTo',6);">Quit</button>
 			</div>

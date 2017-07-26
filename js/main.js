@@ -16,6 +16,10 @@ var globalwinlocalloss = ['I\'m not doing too shabby overall.', 'I\'m still pret
 var globallosslocalwin = ['You\'re pretty good at this, though.', 'Keep it coming, I\'m on a roll!', 'I\'m just getting started.'];
 var globallosslocalloss = ['You\'re pretty good at this, I guess.', 'I\'m just having an off day, is all.', 'Just let me warm up a little.'];
 
+// advanced mode management
+var AdvMode = 0;
+var pyServDown = false;
+
 $(document).ready(function() {
 
 	InitDocument();
@@ -23,9 +27,18 @@ $(document).ready(function() {
 	var cUrl = document.url;
 	socket = io.connect(cUrl);
 
-	socket.on('ReturnWN', function(data) {
+	socket.on('ReturnGuess', function(data) {
 		//console.log(data);
-		var guess = 'Jane ate spaghetti in the presence of <span class="blank"></span>.';
+
+	    if (AdvMode == 1 && data == 'none') {
+		$('.tellMode').empty();
+		$('.tellMode').append('Advanced Mode Unavailable');
+		$('.buttonRemove').empty();
+		pyServDown = true;
+		AdvMode = 0; 
+            }
+
+		var guess = 'Jane ate spaghetti with <span class="blank"></span> involved somehow.';
 		$('.opt .txt:first-child').text('No,');
 		$('.opt').removeClass('compsel');
 		$('.opt').removeClass('usersel');
@@ -40,7 +53,10 @@ $(document).ready(function() {
 		} else if (data == 'manner') {
 			guess = 'Jane exhibited <span class="blank"></span> while eating spaghetti.';
 			$('.responsive').slick('slickGoTo',2);
-		} else $('.responsive').slick('slickGoTo',3);
+		} else if (data == 'company') {
+		    guess = 'Jane ate spaghetti in the presence of <span class="blank"></span>.';
+		    $('.responsive').slick('slickGoTo',3);
+		} else $('.responsive').slick('slickGoTo',4);
 
 		$('.opt.compsel .txt:first-child').text('Yes,');
 		$('.guess').empty();
@@ -88,13 +104,13 @@ function submitQuery(){
 		$('.blank').text(inputtext);
 		$('.blank.capital').text(inputtext.charAt(0).toUpperCase()+inputtext.slice(1));
 		if (inputtext.trim() != '') {
-			socket.emit('RequestParse',[inputtext]);
+		        socket.emit('RequestParse',[inputtext, AdvMode]);
 			play(); //draw canvas
 			$('.vertical').slick('slickGoTo',3);
 		}
 }
 
-//TODO: get this working on iOS...
+//TODO: get this working on iOS... (still relevant?)
 $(document).on(click,'.input-enter',function(event) {
 	submitQuery();
 });
@@ -398,4 +414,35 @@ $(document).on(click, '.btnclickyn', function(event) {
 })
 
 
-// oh boy
+// Advanced/Basic Mode
+
+$(document).on(click, '.advancedMode', function(event){
+    $('.advancedMode').addClass('basicMode');
+    $('.advancedMode').empty();
+    $('.advancedMode').append('Switch to Basic Mode');
+    $('.advancedMode').removeClass('advancedMode');
+    
+    $('.tellMode').empty();
+    $('.tellMode').append('Advanced Mode');
+    
+    AdvMode = 1;
+})
+
+$(document).on(click, '.basicMode', function(event){
+    $('.basicMode').addClass('advancedMode');
+    $('.basicMode').empty();
+    $('.basicMode').append('Switch to Advanced Mode');
+    $('.basicMode').removeClass('basicMode');
+    
+    $('.tellMode').empty();
+    $('.tellMode').append('Basic Mode');
+    
+    AdvMode = 0;
+})
+
+$(document).on(click, '.playAgain', function(event){
+    if (pyServDown){
+        $('.tellMode').empty();
+        $('.tellMode').append('Basic Mode');
+    }
+})
