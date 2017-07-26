@@ -6,10 +6,11 @@ import gensim
 from gensim.models import Word2Vec
 import numpy as np
 from numpy import linalg
+from nltk import tokenize
 
 parser = argparse.ArgumentParser(description='server for using embeddings to classify phrases as utensil, food, manner or company')
 parser.add_argument('-p', '--port', type=int, default=18861, help='port the server is running on')
-parser.add_argument('-v', '--verbose', action='store_true', help='log steps to stderr (normally anything on stderr will signal an error)')
+parser.add_argument('-v', '--verbose', action='store_true', help='log setup and output steps in more detail')
 parser.add_argument('-s', '--small', action='store_true', help='use small-sized embeddings file')
 parser.add_argument('-t', '--train', help='file to use for training phrases')
 parser.add_argument('-o', '--test', help='file to use for test phrases')
@@ -42,7 +43,8 @@ def avg_vec(words):
 
 # TODO: check for multiword phrases
 def avg_vec_phr(phrase):
-    words = [word for word in phrase.split() if model.vocab.has_key(word)]
+    toks = tokenize.word_tokenize(phrase)
+    words = [word for word in toks if model.vocab.has_key(word)]
     if len(words) == 0: return None
     return avg_vec(words)
 
