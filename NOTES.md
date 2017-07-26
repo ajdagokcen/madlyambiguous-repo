@@ -6,10 +6,7 @@
 Advanced mode will require python 2.7 and the gensim package in order
 to use word2vec embeddings.
 
-It will also require NLTK and punkt models for tokenization.  These
-can be downloaded via the GUI by running nltk.download() from IDLE.
-Alternatively, the file tokenizers/punkt/english.pickle can be copied
-to /usr/share/nltk_data or /usr/local/share/etc.
+It will also require NLTK for tokenization.
 
 The README will need to be updated with revised instructions for
 installing and running the system.

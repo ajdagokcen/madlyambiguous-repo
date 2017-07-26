@@ -6,7 +6,7 @@ import gensim
 from gensim.models import Word2Vec
 import numpy as np
 from numpy import linalg
-from nltk import tokenize
+from nltk.tokenize import TreebankWordTokenizer
 
 parser = argparse.ArgumentParser(description='server for using embeddings to classify phrases as utensil, food, manner or company')
 parser.add_argument('-p', '--port', type=int, default=18861, help='port the server is running on')
@@ -22,9 +22,15 @@ data_dir = '../data/'
 embeddings_fn = w2v_dir + ('gn.w2v.gensim.100k' if args.small else 'gensim.gn.w2v')
 train_fn = (data_dir + 'train.tsv') if args.train is None else args.train
 test_fn = (data_dir + 'test.tsv') if args.test is None else args.test
-    
+
+# use PTB tokenizer to avoid need for resources
+tokenizer = TreebankWordTokenizer()
+
 def cossim(v1,v2):
     return np.dot(v1,v2) / (linalg.norm(v1) * linalg.norm(v2))
+
+def cossim_norm(v1,v2): # assumes vectors already normed
+    return np.dot(v1,v2) 
 
 def avg(vecs):
     if len(vecs) == 1: return vecs[0]
@@ -37,13 +43,22 @@ def avg(vecs):
 print 'loading word2vec embeddings from', embeddings_fn
 model = Word2Vec.load(embeddings_fn)
 
+# could normalize embeddings across the board, but
+# that might require loading everything into memory
+#print 'normalizing embeddings'
+#model.init_sims(replace=True)
+
+del model.syn0  # not needed => free up mem
+
+# nb: can use model.index2word to get freq-sorted words
+
 def avg_vec(words):
     vecs = [model[word] for word in words]
     return avg(vecs)
 
 # TODO: check for multiword phrases
 def avg_vec_phr(phrase):
-    toks = tokenize.word_tokenize(phrase)
+    toks = tokenizer.tokenize(phrase)
     words = [word for word in toks if model.vocab.has_key(word)]
     if len(words) == 0: return None
     return avg_vec(words)
