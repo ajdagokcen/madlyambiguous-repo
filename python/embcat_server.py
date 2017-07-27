@@ -7,6 +7,7 @@ from gensim.models import Word2Vec
 import numpy as np
 from numpy import linalg
 from nltk.tokenize import TreebankWordTokenizer
+from nltk.corpus import stopwords
 from math import log
 
 parser = argparse.ArgumentParser(description='server for using embeddings to classify phrases as utensil, food, manner or company')
@@ -26,6 +27,8 @@ test_fn = (data_dir + 'test.tsv') if args.test is None else args.test
 
 # use PTB tokenizer to avoid need for resources
 tokenizer = TreebankWordTokenizer()
+stop_words = set(stopwords.words('english'))
+stop_words.add("'s")
 
 def cossim(v1,v2):
     return np.dot(v1,v2) / (linalg.norm(v1) * linalg.norm(v2))
@@ -57,8 +60,55 @@ model = Word2Vec.load(embeddings_fn)
 #print 'normalizing embeddings'
 #model.init_sims(replace=True)
 
-# nb: can use model.index2word to get freq-sorted words
+# setup truecase dict, mapping lowercase keys to distinct case
+# keys that are more frequent
+casedict = {}
+for i in range(len(model.vocab)):
+    word = model.index2word[i]
+    if not casedict.has_key(word.lower()):
+    	casedict[word.lower()] = word
+truecasedict = dict((k,v) for (k,v) in casedict.items() if k != v)
+del casedict
 
+def truecase(word):
+    lower = word.lower()
+    return truecasedict[lower] if truecasedict.has_key(lower) else word
+
+# TODO: only truecase when missing ...
+def split_words(phrase, only_known=True, filter_stop_words=True):
+    toks = tokenizer.tokenize(phrase)
+    if filter_stop_words:
+        ftoks = [tok for tok in toks if tok not in stop_words]
+        if len(ftoks) > 0: toks = ftoks
+    retval = []
+    idx = 0
+    while idx < len(toks):
+        tok0 = toks[idx]
+        fused = None
+        if idx+1 < len(toks):
+            tok1 = toks[idx+1]
+            tok01 = truecase(tok0 + tok1)
+            if model.vocab.has_key(tok01):
+                fused = tok01
+            else:
+                tok01 = truecase(tok0 + '_' + tok1)                
+                if model.vocab.has_key(tok01):
+                    fused = tok01
+                else:
+                    tok01 = truecase(tok0 + '-' + tok1)                
+                    if model.vocab.has_key(tok01):
+                        fused = tok01
+        if fused is not None:
+            retval.append(fused)
+            idx += 2
+        else:
+            tctok = truecase(tok0)
+            if model.vocab.has_key(tctok) or not only_known:
+                retval.append(tctok)
+            idx += 1
+    return retval
+
+    
 def inv_rank(word):
     return 1.0 / model.vocab[word].index
 
@@ -80,6 +130,8 @@ def avg_vec(words):
 
 # TODO: check for multiword phrases
 def avg_vec_phr(phrase):
+#    words = split_words(phrase)
+#    print 'split:', phrase, 'as:', words
     toks = tokenizer.tokenize(phrase)
     words = [word for word in toks if model.vocab.has_key(word)]
     if len(words) == 0: return None
