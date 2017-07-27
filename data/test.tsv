@@ -29,7 +29,7 @@ her fingers	utensil	utensil
 her toes	utensil	utensil
 her elbows	utensil	utensil
 care	manner	manner
-obama	company	company
+Obama	company	company
 Trump	utensil	company
 Lincoln	company	company
 feathers	company	food
@@ -69,13 +69,13 @@ trash cans	utensil	food
 a mountain	company	company
 dinosaurs	company	company
 oregano	food	food
-chickens	food	food
-the chickens	food	food
+chicken	food	food
+the chickens	food	company
 the illuminati	company	company
 popcorn	food	food
 earrings	utensil	utensil
 dalmatian	company	company
-doritos	company	company
+doritos	company	food
 sauce	food	food
 fervor	manner	manner
 precision	manner	manner

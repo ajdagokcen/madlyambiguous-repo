@@ -45,12 +45,8 @@ def avg(vecs):
     return retval
 
 def weighted_avg(vecs, weights):
-    if len(vecs) == 1: return vecs[0]
-    retval = vecs[0] * weights[0]
-    for (vec,weight) in zip(vecs[1:],weights[1:]):
-        retval = np.add(retval, vec * weight)
-    retval = np.divide(retval, len(vecs))
-    return retval
+    weighted_vecs = [vec*weight for (vec,weight) in zip(vecs,weights)]
+    return avg(weighted_vecs)
     
 print 'loading word2vec embeddings from', embeddings_fn
 model = Word2Vec.load(embeddings_fn)
@@ -70,45 +66,52 @@ for i in range(len(model.vocab)):
 truecasedict = dict((k,v) for (k,v) in casedict.items() if k != v)
 del casedict
 
+# only truecase when missing and not a stopword
 def truecase(word):
+    if model.vocab.has_key(word) or word in stop_words:
+        return word
     lower = word.lower()
     return truecasedict[lower] if truecasedict.has_key(lower) else word
 
-# TODO: only truecase when missing ...
-def split_words(phrase, only_known=True, filter_stop_words=True):
-    toks = tokenizer.tokenize(phrase)
-    if filter_stop_words:
-        ftoks = [tok for tok in toks if tok not in stop_words]
-        if len(ftoks) > 0: toks = ftoks
+# returns the stored count or 0
+# nb: the count may only be the vocab size - the index if actual counts not stored
+# nb: some stop words mysteriously missing; assigning count of 'the' in this case
+def count(word):
+    if word in stop_words and not model.vocab.has_key(word):
+        return model.vocab['the'].count
+    else:
+        return model.vocab[word].count if model.vocab.has_key(word) else 0
+
+# returns whether fused word01 is more frequent than either word0 or word1
+def more_frequent(word01, word0, word1):
+    return count(word01) > count(word0) or count(word01) > count(word0)
+
+# split words, fusing adjacent tokens when more frequent
+def split_words(phrase, only_known=True):
+    words = [truecase(word) for word in tokenizer.tokenize(phrase)]
     retval = []
     idx = 0
-    while idx < len(toks):
-        tok0 = toks[idx]
+    while idx < len(words):
+        word0 = words[idx]
         fused = None
-        if idx+1 < len(toks):
-            tok1 = toks[idx+1]
-            tok01 = truecase(tok0 + tok1)
-            if model.vocab.has_key(tok01):
-                fused = tok01
+        if idx+1 < len(words):
+            word1 = words[idx+1]
+            word01 = truecase(word0 + '_' + word1)
+            if more_frequent(word01, word0, word1):
+                fused = word01
             else:
-                tok01 = truecase(tok0 + '_' + tok1)                
-                if model.vocab.has_key(tok01):
-                    fused = tok01
-                else:
-                    tok01 = truecase(tok0 + '-' + tok1)                
-                    if model.vocab.has_key(tok01):
-                        fused = tok01
+                word01 = truecase(word0 + '-' + word1)                
+                if more_frequent(word01, word0, word1):
+                    fused = word01
         if fused is not None:
             retval.append(fused)
             idx += 2
         else:
-            tctok = truecase(tok0)
-            if model.vocab.has_key(tctok) or not only_known:
-                retval.append(tctok)
+            if model.vocab.has_key(word0) or not only_known:
+                retval.append(word0)
             idx += 1
     return retval
 
-    
 def inv_rank(word):
     return 1.0 / model.vocab[word].index
 
@@ -128,12 +131,11 @@ def avg_vec(words):
     weights = [info / sum_infos for info in infos]
     return weighted_avg(vecs, weights)
 
-# TODO: check for multiword phrases
 def avg_vec_phr(phrase):
-#    words = split_words(phrase)
-#    print 'split:', phrase, 'as:', words
-    toks = tokenizer.tokenize(phrase)
-    words = [word for word in toks if model.vocab.has_key(word)]
+    words = split_words(phrase)
+    #print 'split:', phrase, 'as:', words
+#    toks = tokenizer.tokenize(phrase)
+#    words = [word for word in toks if model.vocab.has_key(word)]
     if len(words) == 0: return None
     return avg_vec(words)
 
