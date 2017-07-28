@@ -117,7 +117,7 @@ a kiwi	food	company
 excitment	company	manner
 Joe	company	company
 her hands	utensil	utensil
-and food	food	food
+food	food	food
 a criminal	food	company
 nuts	utensil	food
 goat	company	food
@@ -126,7 +126,6 @@ provenance	company	none
 a smile	manner	manner
 a bad attitude	manner	manner
 people inside 	company	company
-meatballs in her head	food	company
 a lot of meatballs	food	food
 a little bit of cheese on top	food	food
 a lot of different forks	utensil	utensil
@@ -155,7 +154,6 @@ delicious meatballs	food	food
 my chicken baby	food	company
 her Italian seasonings	manner	food
 chicken	food	food
-a fancy fork	manner	none
 a couple	company	company
 bull	manner	food
 cats	utensil	company
@@ -199,9 +197,9 @@ his dog	food	company
 an attitude	manner	manner
 gusto	manner	manner
 puttanesca sauce	food	food
-Jesus 	company	company
+Jesus	company	company
 a spork 	utensil	utensil
-a smorgasbord 	food	food
+a smorgasbord	food	food
 a fork made out of cheese	food	utensil
 his hands	utensil	utensil
 sauce	food	food
@@ -220,9 +218,29 @@ my best friend 	utensil	company
 my dear friend Bill	utensil	company
 my friend Bill	utensil	company
 my friend Mary	company	company
-one finger		utensil	utensil
-her hands		utensil	utensil
-each toe		utensil	utensil
-her toes		utensil utensil
+one finger	utensil	utensil
+her hands	utensil	utensil
+each toe	utensil	utensil
+her toes	utensil	utensil
 some caution	manner	manner
-great class		manner	manner
+great class	manner	manner
+considerable attention	manner	manner
+slight trepidation	manner	manner
+no worries	manner	manner
+no interest	manner	manner
+some concern	manner	manner
+not a care in the world	manner	manner
+plumage	company	instrument
+tigers	company	company
+Stegosaurus	company	company
+some goats	company	company
+a dinosaur	company	company
+some care	manner	manner
+extreme care	manner	manner
+mustard	food	food
+ketchup	food	food
+tons of relish	food	food
+a lot of ketchup	food	food
+no condiments	food	food
+a cabal	food	company
+a conspiracy	company	company

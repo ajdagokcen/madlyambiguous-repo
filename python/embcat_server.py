@@ -6,6 +6,7 @@ import gensim
 from gensim.models import Word2Vec
 import numpy as np
 from numpy import linalg
+from sklearn.cluster import SpectralClustering
 from nltk.tokenize import TreebankWordTokenizer
 from nltk.corpus import stopwords
 from math import log
@@ -24,6 +25,9 @@ data_dir = '../data/'
 embeddings_fn = w2v_dir + ('gn.w2v.gensim.100k' if args.small else 'gensim.gn.w2v')
 train_fn = (data_dir + 'train.tsv') if args.train is None else args.train
 test_fn = (data_dir + 'test.tsv') if args.test is None else args.test
+
+# TODO: make param
+n_clusters = 3
 
 # use PTB tokenizer to avoid need for resources
 tokenizer = TreebankWordTokenizer()
@@ -144,13 +148,14 @@ print 'reading training data from:', train_fn
 
 cat_names = ['utensil', 'food', 'manner', 'company']
 utensil_vecs, food_vecs, manner_vecs, company_vecs = [], [], [], []
+cat_vecs = [utensil_vecs, food_vecs, manner_vecs, company_vecs]
 
 with open(train_fn) as tsvfile:
     linereader = csv.reader(tsvfile, delimiter='\t')
     for row in linereader:
         phrase = row[0]
         cat = row[2]
-        if cat is 'none': continue
+        if cat == 'none': continue
         vec = avg_vec_phr(phrase)
         if vec is None: continue
         if cat == 'utensil': utensil_vecs.append((vec,phrase))
@@ -161,27 +166,45 @@ with open(train_fn) as tsvfile:
 print 'read', len(utensil_vecs), len(food_vecs), len(manner_vecs), len(company_vecs),
 print 'examples of utensil, food, manner and company phrases'
 
-def firsts(pairs):
-    return [x for (x,_) in pairs]
+# initialize cluster info
+cluster_vecs, cluster_exemplars, cluster_labels = [], [], []
 
-cat_items = [utensil_vecs, food_vecs, manner_vecs, company_vecs]
+print 'clustering training items'
 
-cat_vecs = map(lambda l: avg(firsts(l)), cat_items)
-cat_vecs = [norm_vec(v) for v in cat_vecs]
+# TODO: reduce verbosity by default
+for (vecs,cat) in zip(cat_vecs,cat_names):
+    print 'clustering', cat, 'items'
+    X = np.array([vec for (vec,_) in vecs])
+    # nb: spectral clustering supports using cosine similarity, unlike using kmeans directly
+    sc = SpectralClustering(n_clusters=n_clusters,affinity='cosine').fit(X)
+    clusters = dict((k,[]) for k in set(sc.labels_))
+    clustered = zip(vecs,sc.labels_)
+    for ((vec,phrase),label) in clustered:
+        clusters[label].append((vec,phrase))
+    for label in clusters.keys():
+        items = clusters[label]
+        print 'cluster', label
+        print '; '.join([phrase for (_,phrase) in items])
+        centroid = norm_vec(avg([vec for (vec,_) in items]))
+        simvals = [(cossim_norm(norm_vec(vec),centroid),phrase) for (vec,phrase) in items]
+        exemplar = max(simvals)[1]
+        print 'exemplar:', exemplar
+        cluster_vecs.append(centroid)
+        cluster_exemplars.append(exemplar)
+        cluster_labels.append(cat)
 
-def centroidest(vecs, cat_vec):
-    simvals = [(cossim_norm(norm_vec(vec),cat_vec),phrase) for (vec,phrase) in vecs]
-    return max(simvals)[1]
+print 'finished training with', len(cluster_vecs), 'clusters'
+    
 
-cat_reps = [centroidest(vecs,cat_vec) for (vecs,cat_vec) in zip(cat_items,cat_vecs)]
-print 'category representatives:'
-for rep in cat_reps: print rep
-
+def choose_best(vec):
+    simvals = [cossim_norm(norm_vec(vec), cvec) for cvec in cluster_vecs]
+    return max(zip(simvals,range(len(simvals))))[1]
 
 def choose_cat(vec):
     if vec is None: return 'company'
-    simvals = [cossim_norm(norm_vec(vec), cvec) for cvec in cat_vecs]
-    return max(zip(simvals, cat_names))[1]
+    best_idx = choose_best(vec)
+    return cluster_labels[best_idx]
+
 
 print
 print 'trying test phrases in:', test_fn
@@ -204,8 +227,9 @@ with open(test_fn) as tsvfile:
         if cat == pred_cat:
             correct += 1
         elif args.verbose:
-            print 'mistook:', phrase
-            print 'as:', pred_cat, 'instead of:', cat
+            print 'mistook:', phrase, 'as:', pred_cat, 'instead of:', cat
+            if vec is not None:
+                print 'with best match to cluster for:', cluster_exemplars[choose_best(vec)]
 
 if args.verbose: print
 print 'accuracy:', (1.0 * correct / total)

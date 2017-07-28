@@ -35,7 +35,6 @@ Lincoln	company	company
 feathers	company	food
 basil	food	food
 feathers	company	utensil
-trash	manner	company
 class	manner	manner
 cat meat	utensil	food
 guests	utensil	company
@@ -91,3 +90,5 @@ great care	manner	manner
 rain clouds overhead 	manner	none
 a glass of wine 	food	food
 cheese	food	food
+the elite	company	company
+a clique	company	company
