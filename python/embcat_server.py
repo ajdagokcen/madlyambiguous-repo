@@ -36,6 +36,9 @@ def cossim(v1,v2):
 def cossim_norm(v1,v2): # assumes vectors already normed
     return np.dot(v1,v2) 
 
+def norm_vec(v):
+    return np.divide(v, linalg.norm(v))
+
 def avg(vecs):
     if len(vecs) == 1: return vecs[0]
     retval = vecs[0]
@@ -45,7 +48,7 @@ def avg(vecs):
     return retval
 
 def weighted_avg(vecs, weights):
-    weighted_vecs = [vec*weight for (vec,weight) in zip(vecs,weights)]
+    weighted_vecs = [np.multiply(vec,weight) for (vec,weight) in zip(vecs,weights)]
     return avg(weighted_vecs)
     
 print 'loading word2vec embeddings from', embeddings_fn
@@ -58,6 +61,7 @@ model = Word2Vec.load(embeddings_fn)
 
 # setup truecase dict, mapping lowercase keys to distinct case
 # keys that are more frequent
+print 'setting up truecase dict'
 casedict = {}
 for i in range(len(model.vocab)):
     word = model.index2word[i]
@@ -133,28 +137,13 @@ def avg_vec(words):
 
 def avg_vec_phr(phrase):
     words = split_words(phrase)
-    #print 'split:', phrase, 'as:', words
-#    toks = tokenizer.tokenize(phrase)
-#    words = [word for word in toks if model.vocab.has_key(word)]
     if len(words) == 0: return None
     return avg_vec(words)
 
-print 'setting up category embeddings'
-
-utensil_vec = model['fork']
-food_vec = model['meatballs']
-manner_vec = model['gusto']
-company_vec = model['person']
-
-cat_vecs0 = [utensil_vec, food_vec, manner_vec, company_vec] # (for comparison)
-cat_names = ['utensil', 'food', 'manner', 'company']
-
 print 'reading training data from:', train_fn
 
-utensil_vecs = [utensil_vec]
-food_vecs = [food_vec]
-manner_vecs = [manner_vec]
-company_vecs = [company_vec]
+cat_names = ['utensil', 'food', 'manner', 'company']
+utensil_vecs, food_vecs, manner_vecs, company_vecs = [], [], [], []
 
 with open(train_fn) as tsvfile:
     linereader = csv.reader(tsvfile, delimiter='\t')
@@ -164,20 +153,34 @@ with open(train_fn) as tsvfile:
         if cat is 'none': continue
         vec = avg_vec_phr(phrase)
         if vec is None: continue
-        if cat == 'utensil': utensil_vecs.append(vec)
-        elif cat == 'food': food_vecs.append(vec)
-        elif cat == 'manner': manner_vecs.append(vec)
-        else: company_vecs.append(vec)
+        if cat == 'utensil': utensil_vecs.append((vec,phrase))
+        elif cat == 'food': food_vecs.append((vec,phrase))
+        elif cat == 'manner': manner_vecs.append((vec,phrase))
+        else: company_vecs.append((vec,phrase))
 
 print 'read', len(utensil_vecs), len(food_vecs), len(manner_vecs), len(company_vecs),
 print 'examples of utensil, food, manner and company phrases'
 
-cat_vecs = [avg(utensil_vecs), avg(food_vecs), avg(manner_vecs), avg(company_vecs)]
+def firsts(pairs):
+    return [x for (x,_) in pairs]
+
+cat_items = [utensil_vecs, food_vecs, manner_vecs, company_vecs]
+
+cat_vecs = map(lambda l: avg(firsts(l)), cat_items)
+cat_vecs = [norm_vec(v) for v in cat_vecs]
+
+def centroidest(vecs, cat_vec):
+    simvals = [(cossim_norm(norm_vec(vec),cat_vec),phrase) for (vec,phrase) in vecs]
+    return max(simvals)[1]
+
+cat_reps = [centroidest(vecs,cat_vec) for (vecs,cat_vec) in zip(cat_items,cat_vecs)]
+print 'category representatives:'
+for rep in cat_reps: print rep
 
 
 def choose_cat(vec):
     if vec is None: return 'company'
-    simvals = [cossim(vec, cvec) for cvec in cat_vecs]
+    simvals = [cossim_norm(norm_vec(vec), cvec) for cvec in cat_vecs]
     return max(zip(simvals, cat_names))[1]
 
 print
