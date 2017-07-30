@@ -12,11 +12,13 @@ from nltk.corpus import stopwords
 from math import log
 
 parser = argparse.ArgumentParser(description='server for using embeddings to classify phrases as utensil, food, manner or company')
-parser.add_argument('-p', '--port', type=int, default=18861, help='port the server is running on')
+parser.add_argument('-p', '--port', type=int, default=18861, help='port the server is running on (default 18861)')
 parser.add_argument('-v', '--verbose', action='store_true', help='log setup and output steps in more detail')
 parser.add_argument('-s', '--small', action='store_true', help='use small-sized embeddings file')
 parser.add_argument('-t', '--train', help='file to use for training phrases')
 parser.add_argument('-o', '--test', help='file to use for test phrases')
+parser.add_argument('-c', '--n_clusters', type=int, default=3, help='number of embedding clusters per category (default 3)')
+parser.add_argument('-S', '--no_server', action='store_true', help='skip running the server (just report train/test results)')
 
 args = parser.parse_args()
 
@@ -25,9 +27,6 @@ data_dir = '../data/'
 embeddings_fn = w2v_dir + ('gn.w2v.gensim.100k' if args.small else 'gensim.gn.w2v')
 train_fn = (data_dir + 'train.tsv') if args.train is None else args.train
 test_fn = (data_dir + 'test.tsv') if args.test is None else args.test
-
-# TODO: make param
-n_clusters = 3
 
 # use PTB tokenizer to avoid need for resources
 tokenizer = TreebankWordTokenizer()
@@ -54,7 +53,8 @@ def avg(vecs):
 def weighted_avg(vecs, weights):
     weighted_vecs = [np.multiply(vec,weight) for (vec,weight) in zip(vecs,weights)]
     return avg(weighted_vecs)
-    
+
+print    
 print 'loading word2vec embeddings from', embeddings_fn
 model = Word2Vec.load(embeddings_fn)
 
@@ -171,24 +171,26 @@ cluster_vecs, cluster_exemplars, cluster_labels = [], [], []
 
 print 'clustering training items'
 
-# TODO: reduce verbosity by default
 for (vecs,cat) in zip(cat_vecs,cat_names):
-    print 'clustering', cat, 'items'
+    if args.verbose:
+        print 'clustering', cat, 'items'
     X = np.array([vec for (vec,_) in vecs])
     # nb: spectral clustering supports using cosine similarity, unlike using kmeans directly
-    sc = SpectralClustering(n_clusters=n_clusters,affinity='cosine').fit(X)
+    sc = SpectralClustering(n_clusters=args.n_clusters,affinity='cosine').fit(X)
     clusters = dict((k,[]) for k in set(sc.labels_))
     clustered = zip(vecs,sc.labels_)
     for ((vec,phrase),label) in clustered:
         clusters[label].append((vec,phrase))
     for label in clusters.keys():
         items = clusters[label]
-        print 'cluster', label
-        print '; '.join([phrase for (_,phrase) in items])
+        if args.verbose:
+            print 'cluster', label
+            print '; '.join([phrase for (_,phrase) in items])
         centroid = norm_vec(avg([vec for (vec,_) in items]))
         simvals = [(cossim_norm(norm_vec(vec),centroid),phrase) for (vec,phrase) in items]
         exemplar = max(simvals)[1]
-        print 'exemplar:', exemplar
+        if args.verbose:
+            print 'exemplar:', exemplar
         cluster_vecs.append(centroid)
         cluster_exemplars.append(exemplar)
         cluster_labels.append(cat)
@@ -210,7 +212,7 @@ print
 print 'trying test phrases in:', test_fn
 if args.verbose: print
 
-total, correct, wn_correct, no_emb = 0, 0, 0, 0
+total, correct, wn_total, wn_correct, no_emb = 0, 0, 0, 0, 0
 
 with open(test_fn) as tsvfile:
     linereader = csv.reader(tsvfile, delimiter='\t')
@@ -218,7 +220,9 @@ with open(test_fn) as tsvfile:
         phrase = row[0]
         cat = row[2]
         total += 1
-        if cat == row[1]: wn_correct += 1
+        if len(row) == 3 or row[3] != '1':
+            wn_total += 1
+            if cat == row[1]: wn_correct += 1
         vec = avg_vec_phr(phrase)
         if vec is None:
             if args.verbose: print 'no embedding for:', phrase
@@ -235,7 +239,7 @@ if args.verbose: print
 print 'accuracy:', (1.0 * correct / total)
 print 'out of:', total
 print 'with:', no_emb, 'no embedding cases'
-print 'vs. WordNet accuracy:', (1.0 * wn_correct / total)
+print 'vs. WordNet accuracy:', (1.0 * wn_correct / wn_total)
 
 # define service
 class MyService(rpyc.Service):
@@ -262,9 +266,10 @@ class MyService(rpyc.Service):
         return pred_cat
 
 print
-print 'starting server on port', args.port
-t = ThreadedServer(MyService, port = args.port)
-print
-t.start()
+if not args.no_server:
+    print 'starting server on port', args.port
+    print
+    t = ThreadedServer(MyService, port = args.port)
+    t.start()
 
 

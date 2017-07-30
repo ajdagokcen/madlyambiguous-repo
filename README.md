@@ -28,9 +28,9 @@ You can run `CHECK` (again, within the project's root directory) to ensure that 
 
 ### Credits
 
-Madly Ambiguous, Copyright 2016
+Madly Ambiguous, Copyright 2016-2017
 
-Madly Ambiguous was created through the combined efforts of Ajda Gokcen, Ethan Hill, and Michael White, and funded through NSF Grant 1319318.
+Madly Ambiguous was created through the combined efforts of Ajda Gokcen, Ethan Hill, and Michael White, along with David King, Matt Metzger, and Kaleb White, and was funded in part through NSF Grant 1319318.
 
 Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
 

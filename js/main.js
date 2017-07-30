@@ -215,7 +215,7 @@ $(document).on(click,'.opt',function(event) {
 		$('.vertical').slick('slickGoTo',4);
 
 		UserJudge = $(this).attr('class').split(/\s+/)[1];
-		socket.emit('SaveResults',[UserInput, CompGuess, UserJudge]);
+		socket.emit('SaveResults',[UserInput, CompGuess, UserJudge, AdvMode]);
 	}
 });
 

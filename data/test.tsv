@@ -92,3 +92,9 @@ a glass of wine 	food	food
 cheese	food	food
 the elite	company	company
 a clique	company	company
+nuts	utensil	food	0
+hotdogs	food	food	0
+almonds	food	food	1
+nuts	food	food	1
+nuts and bolts	utensil	utensil	1
+pine nuts	food	food	1
