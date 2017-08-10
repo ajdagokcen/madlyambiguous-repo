@@ -27,7 +27,6 @@ raw meat	food	food
 plastic utensils	manner	utensil
 clams	food	food
 frog legs	food	food
-the undersea cable repair team	utensil	company
 the man with the golden gun	utensil	company
 her father's secretary's ex-wife	manner	company
 oil and garlic	utensil	food
@@ -58,13 +57,11 @@ crab claws	food	food
 Swedish meatballs	food	food
 an Italian fork	manner	utensil
 fish hooks	food	utensil
-Apple	food	company
 meaty hands	utensil	utensil
 crab claws	food	food
 Swedish meatballs	food	food
 an Italian fork	manner	utensil
 fish hooks	food	utensil
-Apple	food	company
 German shepherd meat	manner	food
 a fork	utensil	utensil
 great anger	manner	manner
@@ -177,7 +174,6 @@ a lot of people	company	company
 a lot of cheese	food	food
 a lot of men	utensil	company
 the team	company	company
-the undersea cable	utensil	utensil
 chicken	food	food
 a fork	utensil	utensil
 an Italian	manner	company
@@ -188,7 +184,6 @@ the person with the golden gun	utensil	company
 the man with the golden gun	utensil	company
 a ton of people	company	company
 a ton of cheese	food	food
-the undersea cable repair team	utensil	company
 her dog	food	company
 buffalo Buffalo buffalo buffalo	food	company
 a meatball	food	food

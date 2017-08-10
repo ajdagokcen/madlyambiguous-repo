@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# load embeddings, train clusters, save visualization info
+python embcat_server.py -zS --small
+#python embcat_server.py -zS
+
+# use TSNE to create plots
+python plot_tsne.py
+
+# clean up
+rm -f madclust_*.txt
+

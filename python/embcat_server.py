@@ -19,6 +19,8 @@ parser.add_argument('-t', '--train', help='file to use for training phrases')
 parser.add_argument('-o', '--test', help='file to use for test phrases')
 parser.add_argument('-c', '--n_clusters', type=int, default=3, help='number of embedding clusters per category (default 3)')
 parser.add_argument('-S', '--no_server', action='store_true', help='skip running the server (just report train/test results)')
+parser.add_argument('-z', '--visualize', action='store_true', help='save cluster visualization files')
+parser.add_argument('-f', '--viz_file', default='madclust', help='prefix of visualization files')
 
 args = parser.parse_args()
 
@@ -167,7 +169,7 @@ print 'read', len(utensil_vecs), len(food_vecs), len(manner_vecs), len(company_v
 print 'examples of utensil, food, manner and company phrases'
 
 # initialize cluster info
-cluster_vecs, cluster_exemplars, cluster_labels = [], [], []
+cluster_vecs, cluster_exemplars, cluster_outliers, cluster_labels = [], [], [], []
 
 print 'clustering training items'
 
@@ -189,10 +191,13 @@ for (vecs,cat) in zip(cat_vecs,cat_names):
         centroid = norm_vec(avg([vec for (vec,_) in items]))
         simvals = [(cossim_norm(norm_vec(vec),centroid),phrase) for (vec,phrase) in items]
         exemplar = max(simvals)[1]
+        outlier = min(simvals)[1]
         if args.verbose:
             print 'exemplar:', exemplar
+            print 'outlier:', outlier
         cluster_vecs.append(centroid)
         cluster_exemplars.append(exemplar)
+        cluster_outliers.append(outlier)
         cluster_labels.append(cat)
 
 print 'finished training with', len(cluster_vecs), 'clusters'
@@ -241,6 +246,40 @@ print 'out of:', total
 print 'with:', no_emb, 'no embedding cases'
 print 'vs. WordNet accuracy:', (1.0 * wn_correct / wn_total)
 
+if args.visualize:
+    prefix = args.viz_file
+    viz_emb_fn = prefix + '_X.txt'
+    viz_lab_fn = prefix + '_labels.txt'
+    viz_phr_fn = prefix + '_phrases.txt'
+    print
+    print 'saving embeddings to', prefix + '_*.txt'
+    with open(viz_emb_fn,'wb') as tsvfile:
+        linewriter = csv.writer(tsvfile, delimiter='\t')
+        train_embs = [vec for vecs in cat_vecs for (vec,_) in vecs]
+        for vec in train_embs:
+            linewriter.writerow(vec)
+        for vec in cluster_vecs:
+            linewriter.writerow(vec)
+    with open(viz_lab_fn,'wb') as tsvfile:
+        linewriter = csv.writer(tsvfile, delimiter='\t')
+        train_labs = [cat for (vecs,cat) in zip(cat_vecs,cat_names) for (_,_) in vecs]
+        for lab in train_labs:
+            linewriter.writerow([cat_names.index(lab)])
+        for lab in cluster_labels:
+            linewriter.writerow([cat_names.index(lab)])
+    with open(viz_phr_fn,'w') as tsvfile:
+        linewriter = csv.writer(tsvfile, delimiter='\t')
+        train_phrs = [phrase.strip() for vecs in cat_vecs for (_,phrase) in vecs]
+        #keepers = set(cluster_exemplars + cluster_outliers)
+        for phr in train_phrs:
+            if phr in cluster_outliers:
+                linewriter.writerow([phr])
+            else:
+                linewriter.writerow([])
+        for (lab,phr) in zip(cluster_labels,cluster_exemplars):
+            linewriter.writerow([lab.upper() + ' (' + phr.strip() + ')'])
+        
+    
 # define service
 class MyService(rpyc.Service):
     def on_connect(self):
