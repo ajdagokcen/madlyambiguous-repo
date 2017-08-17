@@ -1,15 +1,6 @@
 # Madly Ambiguous: Notes and Ongoing Issues
 
 
-### Advanced Mode
-
-Advanced mode will require python 2.7 and the gensim package in order to use word2vec embeddings.
-
-It will also require NLTK (3.2.4 or later) for tokenization, and scikit-learn (0.17.1 or later) for clustering.
-
-The README will need to be updated with revised instructions for installing and running the system, including how to get the word2vec embeddings.
-
-
 ### The iOS Issue
 
 **Note that this issue may have been resolved well enough by Matt Metzger's changes.**
