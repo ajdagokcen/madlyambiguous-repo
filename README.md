@@ -17,6 +17,7 @@ Madly Ambiguous is run through Node.js, which can be downloaded for installation
 Additionally, to support *advanced mode* which uses word embeddings, the following software is required:
 
 * Python 2.7
+* [RPyC](https://rpyc.readthedocs.io/en/latest/)
 * [scikit-learn](http://scikit-learn.org/stable/install.html) version 0.17.1 or later 
 * [gensim](http://radimrehurek.com/gensim/install.html)
 * [NLTK](http://www.nltk.org/install.html) version 3.2.4 or later 
@@ -27,6 +28,16 @@ The full pre-trained Google News [word2vec](https://code.google.com/archive/p/wo
 * [gn.w2v.gensim.100k.syn0.npy](http://madlyambiguous.osu.edu:1035/data/gn.w2v.gensim.100k.syn0.npy)
 
 Once downloaded, these files should be moved to the data directory.
+
+Finally, it's necessary to download the NLTK `stopwords` as shown:
+also:
+
+```python
+$ python
+...
+>>> import nltk
+>>> nltk.download('stopwords')
+```
 
 Once Node.js is installed on the machine on which you want to run Madly Ambiguous, you can simply execute the bash script `RUN` in the project's root directory. By default, this will run MadlyAmbiguous at the local port numbered *1035*, although you can specify a different port number by instead running `app.js {port # of choice}`. The tool can then be accessed at **localhost:{PORT #}** within any browser, or at **{URL OF CHOICE}:{PORT #}** if you are running it on a properly set-up server.
 
