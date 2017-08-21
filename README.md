@@ -29,8 +29,7 @@ The full pre-trained Google News [word2vec](https://code.google.com/archive/p/wo
 
 Once downloaded, these files should be moved to the data directory.
 
-Finally, it's necessary to download the NLTK `stopwords` as shown:
-also:
+Finally, it's necessary to download the NLTK `stopwords` data as shown:
 
 ```python
 $ python
