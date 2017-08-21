@@ -26,7 +26,7 @@ args = parser.parse_args()
 
 w2v_dir = '../data/'
 data_dir = '../data/'
-embeddings_fn = w2v_dir + ('gn.w2v.gensim.100k' if args.small else 'gensim.gn.w2v')
+embeddings_fn = w2v_dir + ('gn.w2v.gensim.100k' if args.small else 'gn.w2v.gensim')
 train_fn = (data_dir + 'train.tsv') if args.train is None else args.train
 test_fn = (data_dir + 'test.tsv') if args.test is None else args.test
 
