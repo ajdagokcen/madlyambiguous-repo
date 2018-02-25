@@ -10,6 +10,12 @@ Ultimately, users learn not only about structural ambiguity, but also a little b
 
 Any future updates to Madly Ambiguous can be tracked at the [GitHub repository](https://github.com/ajdagokcen/madlyambiguous-repo).
 
+### Interactive Demo
+
+It should normally be possible to give a demo of Madly Ambiguous from [http://madlyambiguous.osu.edu](http://madlyambiguous.osu.edu).
+
+Guidelines for giving a demo to a general public audience (e.g. at a science museum) can be found in the demo folder along with PDFs for making the accompanying laminated cards.
+
 ### Installation and Running
 
 Madly Ambiguous is run through Node.js, which can be downloaded for installation [here](https://nodejs.org/en/download/) or via command line as outlined [here](https://nodejs.org/en/download/package-manager/).
@@ -61,9 +67,11 @@ To check whether the python server is still running, you can similarly run `CHEC
 
 Madly Ambiguous, Copyright 2016-2017
 
-Madly Ambiguous was created through the combined efforts of Ajda Gokcen, Ethan Hill, and Michael White, along with David King, Matt Metzger, and Kaleb White, and was funded in part through NSF Grant 1319318.
+Madly Ambiguous was created through the combined efforts of Ajda Gokcen, Ethan Hill, and Michael White, along with David King, Matt Metzger, and Kaleb White, and was funded in part through NSF Grant 1319318.  Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
 
-Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
+The interactive demo materials were contributed by Laura Wagner and Victoria Sevich.
+
+Special thanks also to Kathryn Campbell-Kibler and Christy Doran for helpful suggestions.
 
 ### License
 
