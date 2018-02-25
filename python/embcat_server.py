@@ -9,6 +9,7 @@ from numpy import linalg
 from sklearn.cluster import SpectralClustering
 from nltk.tokenize import TreebankWordTokenizer
 from nltk.corpus import stopwords
+from nltk.probability import FreqDist
 from math import log
 
 parser = argparse.ArgumentParser(description='server for using embeddings to classify phrases as utensil, food, manner or company')
@@ -17,6 +18,7 @@ parser.add_argument('-v', '--verbose', action='store_true', help='log setup and 
 parser.add_argument('-s', '--small', action='store_true', help='use small-sized embeddings file')
 parser.add_argument('-t', '--train', help='file to use for training phrases')
 parser.add_argument('-o', '--test', help='file to use for test phrases')
+parser.add_argument('-u', '--unique', action='store_true', help='only score unique test phrases')
 parser.add_argument('-c', '--n_clusters', type=int, default=3, help='number of embedding clusters per category (default 3)')
 parser.add_argument('-S', '--no_server', action='store_true', help='skip running the server (just report train/test results)')
 parser.add_argument('-z', '--visualize', action='store_true', help='save cluster visualization files')
@@ -218,12 +220,20 @@ print 'trying test phrases in:', test_fn
 if args.verbose: print
 
 total, correct, wn_total, wn_correct, no_emb = 0, 0, 0, 0, 0
+fdist = FreqDist()
+seen = set()
 
 with open(test_fn) as tsvfile:
     linereader = csv.reader(tsvfile, delimiter='\t')
     for row in linereader:
         phrase = row[0]
         cat = row[2]
+        phr_cat = phrase + cat
+        if args.unique and phr_cat in seen:
+            continue
+        else:
+            seen.add(phr_cat)
+        fdist[cat] += 1
         total += 1
         if len(row) == 3 or row[3] != '1':
             wn_total += 1
@@ -243,8 +253,11 @@ with open(test_fn) as tsvfile:
 if args.verbose: print
 print 'accuracy:', (1.0 * correct / total)
 print 'out of:', total
+if args.unique: print 'unique cases'
 print 'with:', no_emb, 'no embedding cases'
 print 'vs. WordNet accuracy:', (1.0 * wn_correct / wn_total)
+print 'most frequent category: ', fdist.max()
+print 'majority baseline: ', (1.0 * fdist[fdist.max()] / total)
 
 if args.visualize:
     prefix = args.viz_file
