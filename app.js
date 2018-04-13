@@ -101,10 +101,10 @@ function processRequest(request, response) {
 	}*/
 
 	// HOLE: Check for invalid characters in filename.
-	// HOLE: Check that this accesses file in CWD's hierarchy.
 	fs.exists(filename, function (exists) {
 		var extension, mimeType, fileStream;
-		if (exists) {
+		// block ".." in request url
+		if (exists && request.url.indexOf("..") < 0) {
 			if (fs.lstatSync(filename).isDirectory())
 				filename += "index.html";
 
